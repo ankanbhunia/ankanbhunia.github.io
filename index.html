@@ -13,26 +13,35 @@
 .leftSideBar{display:none !important;}
 .rightSideBar{display:none !important;}
 
-@media screen and (min-width:640px) {
-  /*design for screen-width >= 640px */
+
+.column {
+  float: left;
+  padding: 10px;
 }
 
-
-#contentwrapper{
-float: left;
-width: 100%;
+.left {
+  width: 30%;
+  overflow: scroll;
 }
 
-#contentcolumn{
-margin-left:350px; /*Set left margin to LeftColumnWidth*/
+.right {
+  width: 65%;
+  overflow: scroll;
 }
 
-#leftcolumn{
-float: left;
-width: 350px; /*Width of left column in percentage*/
-margin-left: -100%;
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
 
 </style>
 
@@ -62,14 +71,15 @@ ga('send', 'pageview');
   <title>Ankan Kumar Bhunia - Homepage</title>
   
   <meta name="author" content="Jon Barron">
-  <meta name="viewport" content="width=1024">
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   
   <link rel="stylesheet" type="text/css" href="./src1/stylesheet.css">
  <link rel = "icon" type = "image/png" href = "./src2/ju.png">
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1023.0" data-gr-ext-installed="">
-  <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+  <table style="width:100%;max-width:950px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -77,7 +87,7 @@ ga('send', 'pageview');
             <td style="padding:2.5%;width:63%;vertical-align:middle">
 			
 			 <div id="container">
-			  <div style="float:left; width:31%;">
+			  <div class="column left">
 			<table border="0" cellpadding="0" cellspacing="4">
 
 			  <tbody style="text-align:center"><tr><td valign="top" rowspan="6"><img height="150" border="0" class="img-circle" src="./src2/me.jpg">
@@ -178,9 +188,10 @@ ga('send', 'pageview');
 
 </div>
 
-<div style="float:right; width:68%; ">
+<div class="column right" style="overflow: scroll; height:1200px; margin-left:-20px">
 
 
+  
  
 <!--   	  <h2>Research</h2>
 	  <p>
@@ -188,7 +199,7 @@ ga('send', 'pageview');
 	  </p> -->
     
 <br>
-      <p style="padding-left: 15px; padding-right: 30px; text-align: justify">
+      <p style="padding-left: 15px; padding-right: 20px; text-align: justify">
          
   I am a full-time research assistant at MBZUAI, Abu Dhabi, where I work on computer vision and machine learning under the supervision of <a href="https://sites.google.com/view/fahadkhans/home">Dr Fahad Shahbaz Khan</a>. I mostly work on generative models and visual perception models from a small amount of data. Previously, I have worked with <a href="https://users.encs.concordia.ca/~wayang/">Dr Yang Wang</a> at the University of Manitoba, Canada and <a href="http://parimal.iitr.ac.in/people/partha-pratim-roy">Dr Partha Roy</a>. at IIT Roorkee, India. I have done my bachalors from <a href="https://en.wikipedia.org/wiki/Jadavpur_University">Jadavpur University</a>, Kolkata in Electrical Engineering.
 
@@ -198,8 +209,8 @@ ga('send', 'pageview');
 
 		
 	 <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/gmnr.png" height="90", width="120">
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+              <img class=shadow src="./src2/gmnr.png" height="90", width="120" style="margin-left:20px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/xxxx">
@@ -222,8 +233,8 @@ ga('send', 'pageview');
           </tr>	
 		
           <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/pidm.png" height="90", width="120">
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+              <img class=shadow src="./src2/pidm.png" height="90", width="120" style="margin-left:20px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2211.12500">
@@ -247,8 +258,8 @@ ga('send', 'pageview');
           </tr>
 
           <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/doodles.png" height="90", width="120">
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+              <img class=shadow src="./src2/doodles.png" height="90", width="120" style="margin-left:20px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2112.03258">
@@ -270,8 +281,8 @@ ga('send', 'pageview');
           </tr>
 
           <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/hwt.png" height="90", width="120">
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+              <img class=shadow src="./src2/hwt.png" height="90", width="120" style="margin-left:20px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2104.03964">
@@ -293,8 +304,8 @@ ga('send', 'pageview');
 
 		  
           <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im1.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im1.png' height="90", width="120" style="margin-left:20px;">  
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html">
@@ -314,8 +325,8 @@ ga('send', 'pageview');
           </tr>
 			
           <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im2.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im2.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1810.11120">
@@ -333,8 +344,8 @@ ga('send', 'pageview');
           </tr>			
 		
 		          <tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/PR_logo.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/PR_logo.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1811.01395">
@@ -355,8 +366,8 @@ ga('send', 'pageview');
 		
 		
 			<tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im4.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im4.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.00470">
@@ -378,8 +389,8 @@ ga('send', 'pageview');
           </tr>		
 		  
 		  		  		  	<tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im5.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im5.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1709.09348">
@@ -396,8 +407,8 @@ ga('send', 'pageview');
             </td>
           </tr>		
 		  	<tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im6.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im6.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07156">
@@ -417,8 +428,8 @@ ga('send', 'pageview');
           </tr>		
 		  
 		  	<tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im7.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im7.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07141">
@@ -439,8 +450,8 @@ ga('send', 'pageview');
           </tr>		
 		  
 		  		  	<tr>
-            <td style="width:200px;height:100px;position:absolute; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im8.png' height="90", width="120"> 
+            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
+                <img class=shadow src='./src2/im8.png' height="90", width="120" style="margin-left:20px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07211">
