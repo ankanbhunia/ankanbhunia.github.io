@@ -10,6 +10,7 @@
 }
 
 .shadow {box-shadow: rgba(0, 0, 0, 0.15) 6.00px 6.00px 2.6px;}
+.shadow2  {box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;}
 .leftSideBar{display:none !important;}
 .rightSideBar{display:none !important;}
 
@@ -43,7 +44,75 @@
   }
 }
 
+.tabs {
+  margin: 20px;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+.tabs .active-tab {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: none;
+  position: relative;
+  color: black;
+}
+.tabs .active-tab:after {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  content: "";
+  bottom: -0.1em;
+  left: 0;
+  background: white;
+}
+.tabs li {
+  display: inline-block;
+  cursor: pointer;
+  color: #3a5ea7;
+  padding: 5px 10px;
+}
+.tabs li:first-child {
+  margin-left: 10px;
+}
+
+.tabs-content {
+  margin: 20px;
+  padding: 0;
+  list-style: none;
+}
+.tabs-content li {
+  display: none;
+}
+
+
 </style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+$(function () {
+
+  var activeIndex = $('.active-tab').index(),
+      $contentlis = $('.tabs-content li'),
+      $tabslis = $('.tabs li');
+  
+  // Show content of active tab on loads
+  $contentlis.eq(activeIndex).show();
+
+  $('.tabs').on('click', 'li', function (e) {
+    var $current = $(e.currentTarget),
+        index = $current.index();
+    
+    $tabslis.removeClass('active-tab');
+    $current.addClass('active-tab');
+    $contentlis.hide().eq(index).show();
+   });
+});
+
+</script>
 
 <!-- Please Remove the below lines if you are using my code-->
 <!-- Google Analytics -->
@@ -188,7 +257,7 @@ ga('send', 'pageview');
 
 </div>
 
-<div class="column right" style="overflow: scroll; height:1200px; margin-left:-20px">
+<div class="column right" style="margin-left:-20px">
 
 
   
@@ -199,42 +268,52 @@ ga('send', 'pageview');
 	  </p> -->
     
 <br>
-      <p style="padding-left: 15px; padding-right: 20px; text-align: justify">
+      <p style="padding-left: 15px; padding-right: 25px; text-align: justify">
          
   I am a full-time research assistant at MBZUAI, Abu Dhabi, where I work on computer vision and machine learning under the supervision of <a href="https://sites.google.com/view/fahadkhans/home">Dr Fahad Shahbaz Khan</a>. I mostly work on generative models and visual perception models from a small amount of data. Previously, I have worked with <a href="https://users.encs.concordia.ca/~wayang/">Dr Yang Wang</a> at the University of Manitoba, Canada and <a href="http://parimal.iitr.ac.in/people/partha-pratim-roy">Dr Partha Roy</a>. at IIT Roorkee, India. I have done my bachalors from <a href="https://en.wikipedia.org/wiki/Jadavpur_University">Jadavpur University</a>, Kolkata in Electrical Engineering.
 
     </p>
-<br>
+
+<ul class="tabs">
+  <li class="active-tab">Publications</li>
+  <li>Research</li>
+  <!-- <li>CV/Resume</li> -->
+  <li>Contact</li>
+</ul>
+
+<ul class="tabs-content">
+  <li>
+<div style="overflow: scroll; height:900px;">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-		
-	 <tr>
+    
+   <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/gmnr.png" height="90", width="120" style="margin-left:20px;">
+              <img class=shadow src="./src2/gmnr.png" height="90", width="120" style="margin-left:10px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/xxxx">
                 <papertitle>Generative Multiplane Neural Radiance for 3D-Aware Image Generation</papertitle>
               </a>
               <br>
-	      <a href="https://virobo-15.github.io/">Amandeep Kumar</a>,
+        <a href="https://virobo-15.github.io/">Amandeep Kumar</a>,
               <strong>Ankan Kumar Bhunia</strong>,
               <a href="https://sites.google.com/view/sanath-narayan/home">Sanath Narayan</a>,
               <a href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
               <a href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
-	      <a href="https://salman-h-khan.github.io/">Salman Khan</a>,
+        <a href="https://salman-h-khan.github.io/">Salman Khan</a>,
               <a href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-			  	 
+           
               <br>
               <em>submitted</em>, 2022
 
               
             </td>
-          </tr>	
-		
+          </tr> 
+    
           <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/pidm.png" height="90", width="120" style="margin-left:20px;">
+              <img class=shadow src="./src2/pidm.png" height="90", width="120" style="margin-left:10px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2211.12500">
@@ -245,11 +324,11 @@ ga('send', 'pageview');
               <a href="https://salman-h-khan.github.io/">Salman Khan</a>,
               <a href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
               <a href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
-	      <a href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
-	      <a href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
+        <a href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
+        <a href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
               <a href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-			  
-			 
+        
+       
               <br>
               <em>submitted</em>, 2022
 
@@ -259,7 +338,7 @@ ga('send', 'pageview');
 
           <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/doodles.png" height="90", width="120" style="margin-left:20px;">
+              <img class=shadow src="./src2/doodles.png" height="90", width="120" style="margin-left:10px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2112.03258">
@@ -271,8 +350,8 @@ ga('send', 'pageview');
               <a href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
               <a href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
               <a href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-			  <a href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
-			  <a href="https://scholar.google.com/citations?user=lkWfR08AAAAJ&hl=en">Michael Felsberg</a>,
+        <a href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
+        <a href="https://scholar.google.com/citations?user=lkWfR08AAAAJ&hl=en">Michael Felsberg</a>,
               <br>
               <em>ECCV</em>, 2022
 
@@ -282,7 +361,7 @@ ga('send', 'pageview');
 
           <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img class=shadow src="./src2/hwt.png" height="90", width="120" style="margin-left:20px;">
+              <img class=shadow src="./src2/hwt.png" height="90", width="120" style="margin-left:10px;">
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/2104.03964">
@@ -294,7 +373,7 @@ ga('send', 'pageview');
               <a href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
               <a href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
               <a href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-			  <a href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
+        <a href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
               <br>
               <em>ICCV</em>, 2021
 
@@ -302,20 +381,20 @@ ga('send', 'pageview');
             </td>
           </tr>
 
-		  
+      
           <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im1.png' height="90", width="120" style="margin-left:20px;">  
+                <img class=shadow src='./src2/im1.png' height="90", width="120" style="margin-left:10px;">  
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html">
                 <papertitle>Handwriting Recognition in Low-resource Scripts using Adver-sarial Learning</papertitle>
               </a>
               <br>
-			  
+        
               <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
               <a href="https://scholar.google.com/citations?user=lvPxKQ0AAAAJ&hl=en">Abhirup Das</a>,
-			  <strong>Ankan Kumar Bhunia</strong>,
+        <strong>Ankan Kumar Bhunia</strong>,
               <a href="https://sairajk.github.io/">Sairaj Kishore</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
               <br>
@@ -323,17 +402,17 @@ ga('send', 'pageview');
 
             </td>
           </tr>
-			
+      
           <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im2.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im2.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1810.11120">
                 <papertitle>Improving Document Binarization via Adversarial Noise-Texture Augmentation</papertitle>
               </a>
               <br>
-			  <strong>Ankan Kumar Bhunia</strong>,
+        <strong>Ankan Kumar Bhunia</strong>,
               <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
               <a href="https://aneeshan95.github.io/">Aneeshan Sain</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
@@ -341,141 +420,189 @@ ga('send', 'pageview');
               <em>ICIP</em>, 2019
 
             </td>
-          </tr>			
-		
-		          <tr>
+          </tr>     
+    
+              <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/PR_logo.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/PR_logo.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1811.01395">
                 <papertitle>A Deep One-Shot Network for Query-based Logo Retrieval</papertitle>
               </a>
               <br>
-			  
+        
               <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-			  <strong>Ankan Kumar Bhunia</strong>,
+        <strong>Ankan Kumar Bhunia</strong>,
               <a href="https://shuvozitghose.github.io/">Shuvozit Ghose</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-			  <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
               <br>
               <em>Pattern Recognition</em>, 2019
 
             </td>
-          </tr>		
-		
-		
-			<tr>
+          </tr>   
+    
+    
+      <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im4.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im4.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.00470">
                 <papertitle>Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network</papertitle>
               </a>
               <br>
-			  
+        
               
-			  <strong>Ankan Kumar Bhunia</strong>,
+        <strong>Ankan Kumar Bhunia</strong>,
               <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-			  <a href="">Abir Bhowmik</a>,
-			  <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
+        <a href="">Abir Bhowmik</a>,
+        <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-			
+      
               <br>
               <em>Pattern Recognition</em>, 2019
 
             </td>
-          </tr>		
-		  
-		  		  		  	<tr>
+          </tr>   
+      
+                    <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im5.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im5.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1709.09348">
                 <papertitle>Signature Verification Approach using Fusion of Hybrid Texture Features</papertitle>
               </a>
               <br>
-			  
-			  <strong>Ankan Kumar Bhunia</strong>,
-			  <a href="">Alireza Alaei</a>,
+        
+        <strong>Ankan Kumar Bhunia</strong>,
+        <a href="">Alireza Alaei</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
 
               <br>
               <em>Neural computing and Applications</em>, 2019
             </td>
-          </tr>		
-		  	<tr>
+          </tr>   
+        <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im6.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im6.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07156">
                 <papertitle>Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks</papertitle>
               </a>
               <br>
-			  <strong>Ankan Kumar Bhunia</strong>,
-			  <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-			  <a href="">Prithaj Banerjee</a>,
+        <strong>Ankan Kumar Bhunia</strong>,
+        <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
+        <a href="">Prithaj Banerjee</a>,
               <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-			  <a href="">Abir Bhowmik</a>,
+        <a href="">Abir Bhowmik</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-			  <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
               <br>
               <em>ICPR</em>, 2018
             </td>
-          </tr>		
-		  
-		  	<tr>
+          </tr>   
+      
+        <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im7.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im7.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07141">
                 <papertitle>Staff line Removal using Generative Adversarial Networks</papertitle>
               </a>
               <br>
-			  <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-			  <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-			  <a href="">Abir Bhowmik</a>,
-			  <strong>Ankan Kumar Bhunia</strong>,
-			  <a href="">Prithaj Banerjee</a>,
+        <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
+        <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
+        <a href="">Abir Bhowmik</a>,
+        <strong>Ankan Kumar Bhunia</strong>,
+        <a href="">Prithaj Banerjee</a>,
 
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-			  <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
               <br>
               <em>ICPR</em>, 2018
             </td>
-          </tr>		
-		  
-		  		  	<tr>
+          </tr>   
+      
+              <tr>
             <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img class=shadow src='./src2/im8.png' height="90", width="120" style="margin-left:20px;"> 
+                <img class=shadow src='./src2/im8.png' height="90", width="120" style="margin-left:10px;"> 
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="https://arxiv.org/abs/1801.07211">
                 <papertitle>Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network</papertitle>
               </a>
               <br>
-			  
-			  <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-			  <a href="">Abir Bhowmik</a>,
-			  <strong>Ankan Kumar Bhunia</strong>,
-			  <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-			  <a href="">Prithaj Banerjee</a>,
+        
+        <a href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
+        <a href="">Abir Bhowmik</a>,
+        <strong>Ankan Kumar Bhunia</strong>,
+        <a href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
+        <a href="">Prithaj Banerjee</a>,
               <a href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-			  <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        <a href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
               <br>
               <em>ICPR</em>, 2018
             </td>
-          </tr>		
-		  
-		  		  
-
-		  
+          </tr>   
+      
+            
+      
         </tbody></table>
 
+</div>
+</li>
+<li style='text-align: center;'>
+
+
+  <div>
+  <img class=shadow2 src="./gifs/pidm.gif" alt="this slowpoke moves"  width="475"/><br>
+  <em>1. Person Image Generation</em> - [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a>]<br>
+  </div>
+
+ <br><br>
+
+   <div>
+  <img class=shadow2 src="./gifs/gmnr.gif" alt="this slowpoke moves"  width="475"/><br>
+  <em>2. 3D Image Generation</em> - [<a href="https://arxiv.org/abs/2211.xxxxx">Paper</a>]<br>
+  </div>
+
+ <br><br>
+
+  <div>
+  <img class=shadow2 src="./gifs/hwt.gif" alt="this slowpoke moves"  width="475"/><br>
+  <em>3. Handwritten Image Generation</em> - [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a>]<br>
+  </div>
+
+  <br><br>
+
+  <div>
+  <img class=shadow2 src="./gifs/doodleformer.gif" alt="this slowpoke moves"  width="475"/><br>
+  <em>4. Creative Sketch Image Generation</em> - [<a href="https://arxiv.org/abs/2112.03258">Paper</a> / <a href="https://github.com/ankanbhunia/doodleformer">GitHub</a>]<br>
+  </div>
+
+  </li>
+
+
+
+<!--   <li>
+  <iframe src="./Resume/Ankan_Resume.pdf" height="900" width="540"></iframe>
+
+  </li> -->
+  <li style='text-align: center; font-family:courier;'>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612.6360548301798!2d54.61700581093915!3d24.4335612306537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48a49e018d3b%3A0x3dbe24d3b1463a8c!2sMasdar!5e0!3m2!1sen!2sae!4v1672131713267!5m2!1sen!2sae" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><br><br>
+
+    Building 1A, Masdar City, Abu Dhabi <br>
+    Email: ankankumarbhunia@gmail.com <br>
+    Phone: +971-509830709 <br>
+    Whatsapp: +91-9038858890
+
+  </li>
+</ul>
 
       </td>
     </tr>
