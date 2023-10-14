@@ -6,6 +6,12 @@
 
 <style>
     
+#dmimage {
+transition: transform 0.5s;
+}
+#dmimage:hover {
+transform: scale(1.2);
+}
 body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");} 
 
 .img-circle {
@@ -273,6 +279,8 @@ ga('send', 'pageview');
  <link rel = "icon" type = "image/png" href = "./src2/ju.png">
 </head>
 
+
+
 <body  data-new-gr-c-s-check-loaded="14.1023.0" data-gr-ext-installed="">
   <div style="font-family:Courier; ">
   <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;background-color : #fff;box-shadow: 0px 0px 10px #999;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
@@ -286,7 +294,7 @@ ga('send', 'pageview');
 			  <div class="column left">
 			<table border="0" cellpadding="0" cellspacing="4">
 
-			  <tbody style="text-align:center"><tr><td valign="top" rowspan="6"><img height="100" border="0" class="img-circle" src="im1.png">
+			  <tbody style="text-align:center"><tr><td valign="top" rowspan="6"><img id="dmimage" height="100" border="0" class="img-circle" src="im1.png" onmouseover="changeImage()" onmouseout="restoreImage()">
 			</tbody>
 			  <td style="text-align:center" valign="top" colspan="2"><span class="h1"><h2>Ankan Kumar Bhunia</h2></span>
 			  
@@ -381,7 +389,7 @@ ga('send', 'pageview');
 
 	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/bosch.jpg">
 
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>Robert Bosch, Bangalore, India</b></span>
+	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>Robert Bosch, Bangalore</b></span>
 	
 	  <br><em>Computer Vision Lab</em><br> 
 	  June 2018 - July 2018 </tbody></table>
@@ -917,6 +925,15 @@ $(function () {
    });
 });
 
+</script>
+<script>
+    function changeImage() {
+        document.getElementById("dmimage").src = "im2.png";
+    }
+
+    function restoreImage() {
+        document.getElementById("dmimage").src = "im1.png";
+    }
 </script>
 </body>
 
