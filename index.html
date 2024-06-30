@@ -154,6 +154,36 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
   display: none;
 }
 
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 48%;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #555;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
 .mySlides {display: none}
@@ -164,89 +194,6 @@ img {vertical-align: middle;}
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 10px;
-  margin-left: -50%;
-  color: black;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-
-@media only screen and (max-width: 600px) {
-  .github {display: none}
 }
 
 
@@ -461,7 +408,7 @@ ga('send', 'pageview');
             <td style="padding:20px;width:75%;vertical-align:middle">
               <a href="">
                 <papertitle>Odd-One-Out: Anomaly Detection by Comparing with Neighbors</papertitle></a>
-              - [<a href=""><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/VICO-UoE/Odd-One-Out"><em style="color: #767872;">code</em></a>] / [<a href="https://groups.inf.ed.ac.uk/vico/research/Odd-One-Out/"><em style="color: #767872;">webpage</em></a>]
+              - [<a href=""><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/VICO-UoE/OddOneOutAD"><em style="color: #767872;">code</em></a>] / [<a href="https://groups.inf.ed.ac.uk/vico/research/Odd-One-Out/"><em style="color: #767872;">webpage</em></a>]
               <br>
               <strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen,
               <div style="color: grey;"><em>(under review)</em></div>
@@ -763,52 +710,70 @@ ga('send', 'pageview');
 
 
 </li>
-<li><br>
-<div style="overflow-y: scroll; height:1050px; margin-right: -35px;" class="slideshow-container">
+<li>
+<div style="overflow-y: scroll; margin-right: -35px;" class="card-container">
 
-  <div style='width:90%; margin: auto;' >
-  <strong style="color:black">Anomaly Detection with 2D-3D Alignment</strong> <em style="color:green"> (CVPR'24)</em> <br> [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a> / <a href="https://github.com/VICO-UoE/Looking3D">GitHub</a> / <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">Project</a> / <a href="https://drive.google.com/drive/folders/1D9YFDP0kJkojBa1Rb-fM2uAZoS_1Pm3G"  style="color:red"><b>Dataset</b></a>]
-<br>
-  <p  style='text-align:justify; font-size: 13px; color:gray'>
-  Automatic anomaly detection based on visual cues holds practical significance in various domains, such as manufacturing and product quality assessment. 
-This paper introduces a new conditional anomaly detection problem, which involves identifying anomalies in a query image by comparing it to a reference shape. .<br><br>
-  <img src="./gifs/looking3d.gif" alt="this slowpoke moves"  width="100%"/><br> <br><br>
+
+  <div class="card" style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>Odd-One-Out</u></strong> - [<a href="">Paper</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">GitHub</a></a>] 
+  <p style='text-align:justify; font-size: 12px; color:gray'>
+    Detecting 'odd-looking' samples in multi-view multi-object scenes.<br><br>
+  <img src="./gifs/o3.gif" alt="this slowpoke moves"  width="100%"/>
   </p>
   </div>
 
 
-  <div style='width:90%; margin: auto;' >
-  <strong style="color:black">Pose-Guided Person Image Synthesis</strong> <em style="color:green"> (CVPR'23)</em> <br> [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a> / <a href="https://ankanbhunia.github.io/PIDM/">Project</a> / <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"  style="color:red"><b>Demo</b></a>]
-<br>
-  <p  style='text-align:justify; font-size: 13px; color:gray'>
-  The Pose-guided person image synthesis task aims to render a person’s image with a desired pose and appearance. Specifically, the appearance is defined by a given source image and the pose by a set of keypoints. Having control over the synthesized person images in terms of pose and style is an important requisite for applications such as e-commerce, virtual reality, metaverse and content generation for the entertainment industry. Read our paper <a href="https://arxiv.org/abs/2211.12500">here</a>.<br><br>
-  <img src="./gifs/pidm.gif" alt="this slowpoke moves"  width="100%"/><br> <br><br>
+  <div class="card" style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>Looking3D</u></strong> - [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a> / <a href="https://github.com/VICO-UoE/Looking3D">GitHub</a> / <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">Project</a> / <a href="https://drive.google.com/drive/folders/1D9YFDP0kJkojBa1Rb-fM2uAZoS_1Pm3G"  style="color:red"><b>Dataset</b></a>] - [CVPR'24]
+  <p style='text-align:justify; font-size: 12px; color:gray'>
+    A new benchmark for conditional AD via 2D-3D alignment.<br><br>
+  <img src="./gifs/looking3d.gif" alt="this slowpoke moves"  width="100%"/>
+  </p>
+  </div>
+
+
+  <div class="card"  style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>PIDM</u></strong> - [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a> / <a href="https://ankanbhunia.github.io/PIDM/">Project</a> / <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"  style="color:red"><b>Demo</b></a>] - [CVPR'23]
+<br> 
+  <p  style='text-align:justify; font-size: 12px; color:gray'>
+    Pose-guided person image synthesis via Diffusion models.
+<br><br>
+  <img src="./gifs/pidm.gif" alt="this slowpoke moves"  width="100%"/><br>
   </p>
   </div>
  
 
 
-  <div style='width:90%; margin: auto;' >
-  <strong style="color:black">3D-aware Image Generation</strong> <em style="color:green"> (ICCV'23)</em> <br> [<a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a> / <a href="https://github.com/VIROBO-15/GMNR">GitHub</a>]
+
+  <div class="card"  style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>GMNR</u></strong> - [<a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a> / <a href="https://github.com/VIROBO-15/GMNR">GitHub</a>] - [ICCV'23]
 <br>
-  <p  style='text-align:justify; font-size: 13px; color:gray'>
- We introduced an approach, named GMNR, that focuses at efficiently generating 3D-aware high-resolution images that are view-consistent across multiple camera pose. Qualitative and quantitative experiments on three datasets
-demonstrate the merits of our contributions, leading to favorable performance in terms of image generation quality
-and computational efficiency, compared to existing works.<br><br>
-  <img src="./gifs/gmnr.gif" alt="this slowpoke moves"  width="100%"/><br> <br><br>
+  <p  style='text-align:justify; font-size: 12px; color:gray'> A novel 3D-aware generative model based on multi-plane represenation.
+<br><br>
+  <img src="./gifs/gmnr.gif" alt="this slowpoke moves"  width="100%"/><br> 
   </p>
   </div>
 
 
 
-
-
-  <div style='width:90%; margin: auto;' >
-  <strong style="color:black">Handwriting Generation</strong> <em style="color:green"> (ICCV'21)</em> <br> [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a> / <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb" style="color:red"><b>Demo</b></a>]
+  <div class="card"  style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>Doodleformer</u></strong> - [<a href="https://arxiv.org/pdf/2112.03258">Paper</a> / <a href="https://github.com/ankanbhunia/doodleformer">GitHub</a> / <a href="https://ankanbhunia.github.io/doodleformer/">Project</a>] - [ECCV'22]
 <br>
-  <p  style='text-align:justify; font-size: 13px; color:gray'>
-Automatic handwritting generation can be beneficial for people having disabilities or injuries that prevent them from writing, adapting an author's writing style or gathering additional data for training deep learning-based handwritten text recognition models. Here, we investigate the problem of handwritting generation of text sequences with arbitrary length and diverse calligraphic attributes representing writing styles of a writer. For more visit our project page <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">here</a>.<br><br>
-  <img src="./gifs/hwt.gif" alt="this slowpoke moves"  width="100%"/><br> <br><br>
+  <p style='text-align:justify; font-size: 12px; color:gray'> A new coarse-to-fine framework for creative sketch generation problem.
+<br><br>
+  <img src="./gifs/doodleformer.jpeg" alt="this slowpoke moves"  width="100%"/><br>
+  </p>
+  </div>
+ 
+
+
+
+  <div class="card"  style='width:100%; margin: auto;' >
+  <strong style="color:black">&bull; <u>HWT</u></strong> - [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a> / <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">Project</a> / <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb" style="color:red"><b>Demo</b></a> / <a href="https://huggingface.co/spaces/ankankbhunia/HWT">Huggingface-demo</a>] - [ICCV'21]
+<br>
+  <p style='text-align:justify; font-size: 12px; color:gray'> Handwriting Synthesis - Generate text in anyone's handwriting. 
+<br><br>
+  <img src="./gifs/hwt.gif" alt="this slowpoke moves"  width="100%"/><br>
   </p>
   </div>
  
