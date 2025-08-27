@@ -1,25 +1,26 @@
-const carousel = document.querySelector('.carousel');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
+$(function () {
 
-let currentIndex = 0;
+  var activeIndex = $('.active-tab').index(),
+      $contentlis = $('.tabs-content li'),
+      $tabslis = $('.tabs li');
+  
+  // Show content of active tab on loads
+  $contentlis.eq(activeIndex).show();
 
-prevButton.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-    }
+  $('.tabs').on('click', 'li', function (e) {
+    var $current = $(e.currentTarget),
+        index = $current.index();
+    
+    $tabslis.removeClass('active-tab');
+    $current.addClass('active-tab');
+    $contentlis.hide().eq(index).show();
+   });
 });
 
-nextButton.addEventListener('click', () => {
-    if (currentIndex < carousel.children.length - 2) {
-        currentIndex++;
-        updateCarousel();
-    }
-});
-
-function updateCarousel() {
-    const offset = currentIndex * 50; // 50% is the width of each item
-    carousel.style.transform = `translateX(-${offset}%)`;
+function changeImage() {
+    document.getElementById("dmimage").src = "im2.png";
 }
 
+function restoreImage() {
+    document.getElementById("dmimage").src = "im1.png";
+}
