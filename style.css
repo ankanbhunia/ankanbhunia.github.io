@@ -25,7 +25,6 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
 .rightSideBar{display:none !important;}
 
 .site-footer {
-
   text-align: center;
   margin: 0px 0;
   padding: 0px 0;
@@ -75,33 +74,123 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
   text-align: center;
 }
 
-.column {
-  float: left;
+/* Refactored Layout CSS */
+.main-container {
+  font-family: Courier;
+  width: 100%;
+  max-width: 900px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px #999;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  padding: 2.5%;
+  width: 100%;
+  display: flex; /* Added flex to header to control alignment of profile-info */
+  justify-content: flex-start; /* Align content to the left */
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  /* Removed justify-content: center; */
+  text-align: left;
+}
+
+.profile-info img {
+  margin-right: 20px;
+}
+
+.name-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.name-contact h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.name-contact .email {
+  font-size: 13px;
+  margin-top: -14px;
+  margin-bottom: 10px;
+}
+
+.name-contact .links {
+  text-align: left;
+}
+
+.content-area {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+.left-column {
+  width: 35%;
   padding: 5px;
 }
 
-.left {
-  width: 35%;
-
-}
-
-.right {
+.right-column {
   width: 63%;
-
+  padding: 5px;
+  margin-left: -10px;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*@media screen and (max-width: 600px) {
-  .column {
+@media screen and (max-width: 768px) {
+  .left-column, .right-column {
     width: 100%;
+    margin-left: 0;
   }
-}*/
+  .profile-header {
+    justify-content: center; /* Center on small screens */
+  }
+  .profile-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-info img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .name-contact {
+    align-items: center;
+  }
+  .name-contact .links {
+    text-align: center;
+  }
+}
+
+.news-list, .education-item, .research-item, .publication-item {
+  margin-bottom: 15px;
+}
+
+.education-item, .research-item, .publication-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.education-item img, .research-item img, .publication-item img {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.education-details, .research-details, .publication-details {
+  flex-grow: 1;
+}
+
+.publications-list {
+  overflow-y: scroll;
+  height: 1050px;
+  margin-right: -35px;
+}
 
 .tabs {
   margin: 20px;
