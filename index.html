@@ -2,37 +2,12 @@
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+  <link rel="preload" href="https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" type="text/css" href="./src1/stylesheet.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" type="text/css" href="./src1/stylesheet.css"></noscript>
 
 
 <style>
-    /* Loading animation styles */
-    #loading-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-    }
-
-    .spinner {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #3498db;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        animation: spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
 #dmimage {
 transition: transform 0.5s;
 }
@@ -186,7 +161,7 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to flex-start for left alignment */
     padding: 10px;
 }
 
@@ -197,6 +172,7 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
     max-width: 48%;
     padding: 10px;
     transition: transform 0.3s, box-shadow 0.3s;
+  
 }
 
 .card h2 {
@@ -258,16 +234,12 @@ ga('send', 'pageview');
 <meta name="viewport" content="width=700">
 
   
-  <link rel="stylesheet" type="text/css" href="./src1/stylesheet.css">
  <link rel = "icon" type = "image/png" href = "./src2/ju.png">
 </head>
 
 
 
 <body  data-new-gr-c-s-check-loaded="14.1023.0" data-gr-ext-installed="">
-  <div id="loading-overlay">
-    <div class="spinner"></div>
-  </div>
   <div style="font-family:Courier; ">
   <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;background-color : #fff;box-shadow: 0px 0px 10px #999;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
@@ -301,19 +273,19 @@ ga('send', 'pageview');
     <h2>Recent News</h2>
 	 <b>[09/2025]</b>: 1 paper at <a href="https://neurips.cc/">NeurIPS 2025</a><br>
     <b>[02/2025]</b>: 1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2025</a><br>
-      <b>[10/2024]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US20240161360A1/en">(link)</a><br>
+      <!-- <b>[10/2024]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US20240161360A1/en">(link)</a><br> -->
     <b>[02/2024]</b>: 1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2024</a><br>
-    <b>[10/2023]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US11756244B1/en/">(link)</a><br>
+    <!-- <b>[10/2023]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US11756244B1/en/">(link)</a><br> -->
      <b>[07/2023]</b>: 1 paper at <a href="https://iccv2023.thecvf.com/">ICCV 2023</a><br>
     <b>[06/2023]</b>: 1 paper at <a href="https://conferences.miccai.org/2023/en/">MICCAI 2023</a><br>
     <b>[02/2023]</b>: 1 paper at <a href="http://cvpr2023.thecvf.com/">CVPR 2023</a><br>
 	<b>[07/2022]</b>: 1 paper at <a href="https://eccv2022.ecva.net/">ECCV 2022</a><br>
 	<b>[07/2021]</b>: 1 paper at <a href="http://iccv2021.thecvf.com/home">ICCV 2021</a><br>
-	<!-- <b>[10/2019]</b>: 1 paper at <a href="https://www.journals.elsevier.com/information-fusion">Information Fusion</a><br>
+	<b>[10/2019]</b>: 1 paper at <a href="https://www.journals.elsevier.com/information-fusion">Information Fusion</a><br>
     <b>[07/2019]</b>: 1 paper at <a href="https://www.journals.elsevier.com/pattern-recognition">Pattern Recognition</a><br>
     <b>[03/2019]</b>: 1 paper at <a href="http://cvpr2019.thecvf.com//">CVPR 2019</a><br>
 	<b>[05/2019]</b>: 1 paper at <a href="http://2019.ieeeicip.org/">ICIP 2019</a><br>
-    <b>[05/2019]</b>: 1 paper at <a href="https://link.springer.com/journal/521">Neural Computing and Application</a><br> 
+    <!-- <b>[05/2019]</b>: 1 paper at <a href="https://link.springer.com/journal/521">Neural Computing and Application</a><br> 
 	<b>[08/2018]</b>: 1 paper at <a href="https://www.journals.elsevier.com/pattern-recognition">Pattern Recognition</a><br>
     <b>[04/2018]</b>: 3 papers at <a href="http://www.icpr2018.org/">ICPR 2018</a><br> -->
 
@@ -420,6 +392,7 @@ ga('send', 'pageview');
 <ul class="tabs">
   <li class="active-tab">Publications</li>
   <li>Research</li>
+  <li>Patents</li>
   <!-- <li>CV/Resume</li> -->
   <li>Contact</li>
 </ul>
@@ -523,12 +496,12 @@ ga('send', 'pageview');
              
                 - [<a href="https://arxiv.org/abs/2211.12500"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/ankanbhunia/PIDM"><em style="color: #767872;">code</em></a>] / [<a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"><em style="color: #767872;">demo</em></a>] / [<a href="https://ankanbhunia.github.io/PIDM/"><em style="color: #767872;">webpage</em></a>] <br>
               <strong>Ankan Bhunia</strong>,
-              <aa href="https://salman-h-khan.github.io/">Salman Khan</a>,
-              <aa href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
-              <aa href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
-        <aa href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
-        <aa href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
-              <aa href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
+              Salman Khan,
+              Hisham Cholakkal,
+              Rao Anwer,
+        Jorma Laaksonen,
+        Mubarak Shah,
+              Fahad Khan,
        
               <br>
               <strong style="color: indianred;"><em>CVPR</em>, 2023</strong><br>
@@ -548,12 +521,12 @@ ga('send', 'pageview');
               - [<a href="https://arxiv.org/abs/2112.03258"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/ankanbhunia/doodleformer"><em style="color: #767872;">code</em></a>] / [<a href="https://ankanbhunia.github.io/doodleformer/"><em style="color: #767872;">webpage</em></a>] 
               <br>
               <strong>Ankan Bhunia</strong>,
-              <aa href="https://salman-h-khan.github.io/">Salman Khan</a>,
-              <aa href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
-              <aa href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
-              <aa href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-        <aa href="https://scholar.google.com/citations?user=qQP6WXIAAAAJ&hl=en">Jorma Laaksonen</a>,
-        <aa href="https://scholar.google.com/citations?user=lkWfR08AAAAJ&hl=en">Michael Felsberg</a>,
+              Salman Khan,
+              Hisham Cholakkal,
+              Rao Anwer,
+              Fahad Khan,
+        Jorma Laaksonen,
+        Michael Felsberg,
               <br>
               <strong style="color: indianred;"><em>ECCV</em>, 2022</strong>
 
@@ -575,11 +548,11 @@ ga('send', 'pageview');
 
               <br>
               <strong>Ankan Bhunia</strong>,
-              <aa href="https://salman-h-khan.github.io/">Salman Khan</a>,
-              <aa href="https://scholar.google.com/citations?user=bZ3YBRcAAAAJ&hl=en">Hisham Cholakkal</a>,
-              <aa href="https://scholar.google.fi/citations?user=_KlvMVoAAAAJ&hl=en">Rao Anwer</a>,
-              <aa href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-        <aa href="https://scholar.google.com/citations?user=p8gsO3gAAAAJ&hl=en">Mubarak Shah</a>,
+              Salman Khan,
+              Hisham Cholakkal,
+              Rao Anwer,
+              Fahad Khan,
+        Mubarak Shah,
               <br>
               <strong style="color: indianred;"><em>ICCV</em>, 2021</strong>
 
@@ -598,11 +571,11 @@ ga('send', 'pageview');
               </a> - [<a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html"><em style="color: #767872;">paper</em></a>]
               <br>
         
-              <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-              <aa href="https://scholar.google.com/citations?user=lvPxKQ0AAAAJ&hl=en">Abhirup Das</a>,
+              Ayan Kumar Bhunia,
+              Abhirup Das,
         <strong>Ankan Bhunia</strong>,
-              <aa href="https://sairajk.github.io/">Sairaj Kishore</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
+              Sairaj Kishore,
+              Partha Pratim Roy,
               <br>
               <strong style="color: indianred;"><em>CVPR</em>, 2019</strong>
 
@@ -619,9 +592,9 @@ ga('send', 'pageview');
               </a> - [<a href="https://arxiv.org/abs/1810.11120"><em style="color: #767872;">paper</em></a>]
               <br>
         <strong>Ankan Bhunia</strong>,
-              <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-              <aa href="https://aneeshan95.github.io/">Aneeshan Sain</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
+              Ayan Kumar Bhunia,
+              Aneeshan Sain,
+              Partha Pratim Roy,
               <br>
               <strong style="color: indianred;"><em>ICIP</em>, 2019</strong>
 
@@ -638,11 +611,11 @@ ga('send', 'pageview');
               </a> - [<a href="https://arxiv.org/abs/1811.01395"><em style="color: #767872;">paper</em></a>]
               <br>
         
-              <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
+              Ayan Kumar Bhunia,
         <strong>Ankan Bhunia</strong>,
-              <aa href="https://shuvozitghose.github.io/">Shuvozit Ghose</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-        <aa href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+              Shuvozit Ghose,
+              Partha Pratim Roy,
+        Umapada Pal,
               <br>
               <strong style="color: indianred;"><em>Pattern Recognition</em>, 2019</strong>
 
@@ -662,10 +635,10 @@ ga('send', 'pageview');
         
               
         <strong>Ankan Bhunia</strong>,
-              <aa href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-        <aa href="">Abir Bhowmik</a>,
-        <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
+              Aishik Konwer,
+        Abir Bhowmik,
+        Ayan Kumar Bhunia,
+              Partha Pratim Roy,
       
               <br>
               <strong style="color: indianred;"><em>Pattern Recognition</em>, 2019</strong>
@@ -684,8 +657,8 @@ ga('send', 'pageview');
               <br>
         
         <strong>Ankan Bhunia</strong>,
-        <aa href="">Alireza Alaei</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
+        Alireza Alaei,
+              Partha Pratim Roy,
 
               <br>
               <strong style="color: indianred;"><em>Neural computing and Applications</em>, 2019</strong>
@@ -701,12 +674,12 @@ ga('send', 'pageview');
               </a> - [<a href="https://arxiv.org/abs/1801.07156"><em style="color: #767872;">paper</em></a>]
               <br>
         <strong>Ankan Bhunia</strong>,
-        <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-        <aa href="">Prithaj Banerjee</a>,
-              <aa href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-        <aa href="">Abir Bhowmik</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-        <aa href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        Ayan Kumar Bhunia,
+        Prithaj Banerjee,
+              Aishik Konwer,
+        Abir Bhowmik,
+              Partha Pratim Roy,
+        Umapada Pal,
               <br>
               <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
 
@@ -722,14 +695,14 @@ ga('send', 'pageview');
                 <papertitle>Staff line Removal using Generative Adversarial Networks</papertitle>
               </a> - [<a href="https://arxiv.org/abs/1801.07141"><em style="color: #767872;">paper</em></a>]
               <br>
-        <aa href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-        <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-        <aa href="">Abir Bhowmik</a>,
+        Aishik Konwer,
+        Ayan Kumar Bhunia,
+        Abir Bhowmik,
         <strong>Ankan Bhunia</strong>,
-        <aa href="">Prithaj Banerjee</a>,
+        Prithaj Banerjee,
 
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-        <aa href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+              Partha Pratim Roy,
+        Umapada Pal,
               <br>
               <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
             </td>
@@ -745,13 +718,13 @@ ga('send', 'pageview');
               </a> - [<a href="https://arxiv.org/abs/1801.07211"><em style="color: #767872;">paper</em></a>]
               <br>
         
-        <aa href="https://ayankumarbhunia.github.io/">Ayan Kumar Bhunia</a>,
-        <aa href="">Abir Bhowmik</a>,
+        Ayan Kumar Bhunia,
+        Abir Bhowmik,
         <strong>Ankan Bhunia</strong>,
-        <aa href="https://sites.google.com/site/konweraishik/">Aishik Konwer</a>,
-        <aa href="">Prithaj Banerjee</a>,
-              <aa href="https://scholar.google.com/citations?user=moDpyKkAAAAJ&hl=en">Partha Pratim Roy</a>,
-        <aa href="https://scholar.google.co.in/citations?user=2_z_CogAAAAJ&hl=en">Umapada Pal</a>,
+        Aishik Konwer,
+        Prithaj Banerjee,
+              Partha Pratim Roy,
+        Umapada Pal,
               <br>
               <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
             </td>
@@ -865,21 +838,34 @@ ga('send', 'pageview');
 
   </li> -->
 
+  <li>
+    <div style="overflow-y: scroll; margin-right: -35px;" class="card-container">
+      <div class="card" style='width:100%; margin: auto;'>
+        <strong style="color:black">&bull; <u>[09/2023] System and method for handwriting generation</u></strong> - [<a href="https://patents.google.com/patent/US11756244B1/en"><em style="color: #767872;">link</em></a>]
+        <br><br>
+        <img src="./patents/hwt.png" alt="this slowpoke moves"  width="100%"/><br>
 
-<!--   <li>
-  <iframe src="./Resume/Ankan_Resume.pdf" height="900" width="540"></iframe>
+      </div>
+      <div class="card" style='width:100%; margin: auto;'>
+        <strong style="color:black">&bull; <u>[09/2024] System and method of cross-modulated dense local fusion for few-shot image generation</u></strong> - [<a href="https://patents.google.com/patent/US12100082B2/en"><em style="color: #767872;">link</em></a>]
+        <br><br>
+        <img src="./patents/xmgan.png" alt="this slowpoke moves"  width="100%"/><br>
 
-  </li> -->
+      </div>
+    </div>
+  </li>
+
+  
   <li style='text-align: center; font-family:courier;'>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.1956136720185!2d-3.187865156749468!3d55.9450301321123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c78381d04457%3A0xd072ab38eb50c7a4!2sSchool%20of%20Informatics!5e0!3m2!1sen!2suk!4v1684098165835!5m2!1sen!2suk" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><br><br>
 
     The Bayes Centre, Edinburgh EH8 9BT <br>
     Email: ankankumarbhunia [at] gmail.com / <br>
     ankan.bhunia [at] ed.ac.uk<br>
-<!--     Phone: +44-7770723790 <br>
-    Whatsapp: +91-9038858890 -->
+
 
   </li>
+
 </ul>
 
       </td>
@@ -959,10 +945,5 @@ $(function () {
     function restoreImage() {
         document.getElementById("dmimage").src = "im1.png";
     }
-</script>
-<script>
-    window.addEventListener('load', function() {
-        document.getElementById('loading-overlay').style.display = 'none';
-    });
 </script>
 </body>
