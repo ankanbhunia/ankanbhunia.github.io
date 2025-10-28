@@ -151,6 +151,8 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
   margin: 20px;
   padding: 0;
   list-style: none;
+  max-height: 1000px; /* Adjust as needed */
+  overflow-y: scroll;
 }
 .tabs-content li {
   display: none;
@@ -184,7 +186,7 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
 }
 
 .card:hover {
-    transform: scale(1.3); /* Enlarge to 1.3x */
+    transform: scale(1.1); /* Enlarge to 1.3x */
     box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
     z-index: 10; /* Bring to front */
     position: relative; /* Needed for z-index to work */
@@ -201,6 +203,25 @@ img {vertical-align: middle;}
   margin: auto;
 }
 
+.research-heading {
+  font-size: 1.3em; /* Larger font */
+  font-weight: normal; /* No bold */
+  color: #333; /* A slightly darker color for better style */
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding-left: 10px; /* Align with card-container padding */
+}
+
+.conference-highlight {
+  color: indianred;
+  font-weight: bold;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+}
 
 </style>
 
@@ -401,7 +422,9 @@ ga('send', 'pageview');
 
 <ul class="tabs-content">
   <li>
-<div style="margin-right: -35px;">
+<div>
+
+  
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
              <div style="margin-left:15px;"> More details are available on <a href="https://scholar.google.com/citations?user=2leAc3AAAAAJ&hl=en">Google Scholar</a></div><br>
@@ -765,10 +788,12 @@ ga('send', 'pageview');
 
 </li>
 <li>
-<div style="margin-right: -35px;" class="card-container">
+  <h3 class="research-heading">Topics: 3D Vision / Application / Embodied Vision</h3>
+<div class="card-container">
+  
 
-  <div class="card" style='width:100%; margin: auto;' >
-    <strong style="color:black">&bull; <u>InteractiveAD</u></strong> - [<a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">webpage</a>] - [NeurIPS'25] 
+  <div class="card" style='width:100%;' >
+    [<span class="conference-highlight">NeurIPS'25</span>] <strong style="color:black">&bull; <u>InteractiveAD</u></strong> - [<a href="https://groups.inf.ed.ac.uk/vico/research/interactiveAD/">webpage</a>]
     <p style='text-align:justify; font-size: 12px; color:gray'>
       Interactive agent-based AD framework for articulated 3D objects.<br><br>
     <img src="./gifs/iad.gif" alt="this slowpoke moves"  width="100%"/>
@@ -776,8 +801,8 @@ ga('send', 'pageview');
     </div>
   
 
-  <div class="card" style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>Odd-One-Out</u></strong> - [<a href="https://arxiv.org/abs/2406.20099">Paper</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">GitHub</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">Dataset</a></a>] - [CVPR'25] 
+  <div class="card" style='width:100%;' >
+    [<span class="conference-highlight">CVPR'25</span>] <strong style="color:black">&bull; <u>Odd-One-Out</u></strong> - [<a href="https://arxiv.org/abs/2406.20099">Paper</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">GitHub</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">Dataset</a></a>] 
   <p style='text-align:justify; font-size: 12px; color:gray'>
     Detecting 'odd-looking' samples in multi-view multi-object scenes.<br><br>
   <img src="./gifs/o3.gif" alt="this slowpoke moves"  width="100%"/>
@@ -785,17 +810,23 @@ ga('send', 'pageview');
   </div>
 
 
-  <div class="card" style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>Looking3D</u></strong> - [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a> / <a href="https://github.com/VICO-UoE/Looking3D">GitHub</a> / <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">webpage</a> / <a href="https://uoe-my.sharepoint.com/:f:/g/personal/s2514643_ed_ac_uk/EjURAFBBbmxHvlMvDGrKvzEBOB29U3QShVRsqekp0rha_g?e=jenLk6">Dataset</a>] - [CVPR'24]
+  <div class="card" style='width:100%;' >
+    [<span class="conference-highlight">CVPR'24</span>] <strong style="color:black">&bull; <u>Looking3D</u></strong> - [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a> / <a href="https://github.com/VICO-UoE/Looking3D">GitHub</a> / <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">webpage</a> / <a href="https://uoe-my.sharepoint.com/:f:/g/personal/s2514643_ed_ac_uk/EjURAFBBbmxHvlMvDGrKvzEBOB29U3QShVRsqekp0rha_g?e=jenLk6">Dataset</a>] 
   <p style='text-align:justify; font-size: 12px; color:gray'>
     A new benchmark for conditional AD via 2D-3D alignment.<br><br>
   <img src="./gifs/looking3d.gif" alt="this slowpoke moves"  width="100%"/>
   </p>
   </div>
+</div>
 
+<hr>
 
-  <div class="card"  style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>PIDM</u></strong> - [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a> / <a href="https://ankanbhunia.github.io/PIDM/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"  style="color:red"><b>Demo</b></a>] - [CVPR'23]
+<h3 class="research-heading">Topics: Image Generative Models / Diffusion / GAN</h3>
+
+<div class="card-container">
+
+  <div class="card"  style='width:100%;' >
+    [<span class="conference-highlight">CVPR'23</span>] <strong style="color:black">&bull; <u>PIDM</u></strong> - [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a> / <a href="https://ankanbhunia.github.io/PIDM/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"  style="color:red"><b>Demo</b></a>] 
 <br> 
   <p  style='text-align:justify; font-size: 12px; color:gray'>
     Pose-guided person image synthesis via Diffusion models.
@@ -807,8 +838,8 @@ ga('send', 'pageview');
 
 
 
-  <div class="card"  style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>GMNR</u></strong> - [<a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a> / <a href="https://github.com/VIROBO-15/GMNR">GitHub</a>] - [ICCV'23]
+  <div class="card"  style='width:100%;' >
+    [<span class="conference-highlight">ICCV'23</span>] <strong style="color:black">&bull; <u>GMNR</u></strong> - [<a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a> / <a href="https://github.com/VIROBO-15/GMNR">GitHub</a>] 
 <br>
   <p  style='text-align:justify; font-size: 12px; color:gray'> A novel 3D-aware generative model based on multi-plane represenation.
 <br><br>
@@ -818,8 +849,8 @@ ga('send', 'pageview');
 
 
 
-  <div class="card"  style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>Doodleformer</u></strong> - [<a href="https://arxiv.org/pdf/2112.03258">Paper</a> / <a href="https://github.com/ankanbhunia/doodleformer">GitHub</a> / <a href="https://ankanbhunia.github.io/doodleformer/">webpage</a>] - [ECCV'22]
+  <div class="card"  style='width:100%;' >
+    [<span class="conference-highlight">ECCV'22</span>] <strong style="color:black">&bull; <u>Doodleformer</u></strong> - [<a href="https://arxiv.org/pdf/2112.03258">Paper</a> / <a href="https://github.com/ankanbhunia/doodleformer">GitHub</a> / <a href="https://ankanbhunia.github.io/doodleformer/">webpage</a>] 
 <br>
   <p style='text-align:justify; font-size: 12px; color:gray'> A new coarse-to-fine framework for creative sketch generation problem.
 <br><br>
@@ -830,42 +861,20 @@ ga('send', 'pageview');
 
 
 
-  <div class="card"  style='width:100%; margin: auto;' >
-  <strong style="color:black">&bull; <u>HWT</u></strong> - [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a> / <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb" style="color:red"><b>Demo</b></a> / <a href="https://huggingface.co/spaces/ankankbhunia/HWT">Huggingface-demo</a>] - [ICCV'21]
+  <div class="card"  style='width:100%;' >
+    [<span class="conference-highlight">ICCV'21</span>] <strong style="color:black">&bull; <u>HWT</u></strong> - [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a> / <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb" style="color:red"><b>Demo</b></a> / <a href="https://huggingface.co/spaces/ankankbhunia/HWT">Huggingface-demo</a>] 
 <br>
   <p style='text-align:justify; font-size: 12px; color:gray'> Handwriting Synthesis - Generate text in anyone's handwriting. 
 <br><br>
   <img src="./gifs/hwt.gif" alt="this slowpoke moves"  width="100%"/><br>
   </p>
-  </div>
+</div>
  
 
 
 
-<!-- <div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-  <img src="./src2/uoe.png" style="width:100%">
-  <div class="text">Caption Three</div>
-</div> -->
-
-<!-- 
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-  <span class="dot" onclick="currentSlide(4)"></span> 
-</div>
-
-  </li> -->
-
   <li>
-    <div style="margin-right: -35px;" class="card-container">
+    <div class="card-container">
       <div class="card" style='width:100%; margin: auto;'>
         <strong style="color:black">&bull; <u>[09/2023] System and method for handwriting generation</u></strong> - [<a href="https://patents.google.com/patent/US11756244B1/en"><em style="color: #767872;">link</em></a>]
         <br><br>
