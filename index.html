@@ -413,15 +413,15 @@ ga('send', 'pageview');
     </p>
 
 <ul class="tabs">
-  <li class="active-tab">Publications</li>
-  <li>Research</li>
-  <li>Patents</li>
+  <li class="active-tab" id="tab-publications">Publications</li>
+  <li id="tab-research">Research</li>
+  <li id="tab-patents">Patents</li>
   <!-- <li>CV/Resume</li> -->
-  <li>Contact</li>
+  <li id="tab-contact">Contact</li>
 </ul>
 
 <ul class="tabs-content">
-  <li>
+  <li id="content-publications">
 <div>
 
   
@@ -787,7 +787,7 @@ ga('send', 'pageview');
 
 
 </li>
-<li>
+  <li id="content-research">
   <h3 class="research-heading">Topics: 3D Vision / Application / Embodied Vision</h3>
 <div class="card-container">
   
@@ -873,7 +873,7 @@ ga('send', 'pageview');
 
 
 
-  <li>
+  <li id="content-patents">
     <div class="card-container">
       <div class="card" style='width:100%; margin: auto;'>
         <strong style="color:black">&bull; <u>[09/2023] System and method for handwriting generation</u></strong> - [<a href="https://patents.google.com/patent/US11756244B1/en"><em style="color: #767872;">link</em></a>]
@@ -891,7 +891,7 @@ ga('send', 'pageview');
   </li>
 
   
-  <li style='text-align: center; font-family:courier;'>
+  <li id="content-contact" style='text-align: center; font-family:courier;'>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.1956136720185!2d-3.187865156749468!3d55.9450301321123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c78381d04457%3A0xd072ab38eb50c7a4!2sSchool%20of%20Informatics!5e0!3m2!1sen!2suk!4v1684098165835!5m2!1sen!2suk" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><br><br>
 
     The Bayes Centre, Edinburgh EH8 9BT <br>
@@ -953,22 +953,48 @@ ga('send', 'pageview');
 
 <script>
 $(function () {
-
-  var activeIndex = $('.active-tab').index(),
-      $contentlis = $('.tabs-content li'),
+  var $contentlis = $('.tabs-content li'),
       $tabslis = $('.tabs li');
-  
-  // Show content of active tab on loads
-  $contentlis.eq(activeIndex).show();
 
-  $('.tabs').on('click', 'li', function (e) {
-    var $current = $(e.currentTarget),
-        index = $current.index();
-    
+  // Function to activate a tab
+  function activateTab(tabId) {
     $tabslis.removeClass('active-tab');
-    $current.addClass('active-tab');
-    $contentlis.hide().eq(index).show();
-   });
+    $contentlis.hide();
+
+    var $targetTab = $('#tab-' + tabId);
+    var $targetContent = $('#content-' + tabId);
+
+    if ($targetTab.length && $targetContent.length) {
+      $targetTab.addClass('active-tab');
+      $targetContent.show();
+    } else {
+      // Default to Publications if tabId is not found or invalid
+      $('#tab-publications').addClass('active-tab');
+      $('#content-publications').show();
+    }
+  }
+
+  // Handle initial page load based on URL
+  var path = window.location.pathname;
+  var defaultTab = 'publications'; // Default tab if no specific path is found
+
+  if (path.includes('/research')) {
+    defaultTab = 'research';
+  } else if (path.includes('/patents')) {
+    defaultTab = 'patents';
+  } else if (path.includes('/contact')) {
+    defaultTab = 'contact';
+  }
+  // Add more conditions for other tabs if needed
+
+  activateTab(defaultTab);
+
+  // Handle tab clicks
+  $('.tabs').on('click', 'li', function (e) {
+    var $current = $(e.currentTarget);
+    var tabId = $current.attr('id').replace('tab-', '');
+    activateTab(tabId);
+  });
 });
 
 </script>
