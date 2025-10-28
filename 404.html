@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url=/">
+    <script>
+      var path = window.location.pathname;
+      // Remove leading slash and any trailing slashes, then use it as hash
+      var hash = path.substring(1).split('/')[0];
+      if (hash) {
+        window.location.replace("/#" + hash);
+      } else {
+        window.location.replace("/");
+      }
+    </script>
   </head>
   <body></body>
 </html>
