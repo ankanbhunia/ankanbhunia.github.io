@@ -975,14 +975,14 @@ $(function () {
   }
 
   // Handle initial page load based on URL
-  var path = window.location.pathname;
+  var hash = window.location.hash;
   var defaultTab = 'publications'; // Default tab if no specific path is found
 
-  if (path.includes('/research')) {
+  if (hash.includes('research')) {
     defaultTab = 'research';
-  } else if (path.includes('/patents')) {
+  } else if (hash.includes('patents')) {
     defaultTab = 'patents';
-  } else if (path.includes('/contact')) {
+  } else if (hash.includes('contact')) {
     defaultTab = 'contact';
   }
   // Add more conditions for other tabs if needed
@@ -994,7 +994,7 @@ $(function () {
     var $current = $(e.currentTarget);
     var tabId = $current.attr('id').replace('tab-', '');
     activateTab(tabId);
-    window.history.pushState({}, '', '/' + tabId); // Update URL without hash on tab click
+    window.location.hash = '#' + tabId; // Update URL hash on tab click
   });
 });
 
