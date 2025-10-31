@@ -91,12 +91,12 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
 }
 
 .left {
-  width: 32%;
+  width: 34%;
 
 }
 
 .right {
-  width: 68%;
+  width: 66%;
 
 }
 
@@ -151,8 +151,13 @@ body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");}
   margin: 20px;
   padding: 0;
   list-style: none;
-  max-height: 1000px; /* Adjust as needed */
+  max-height: 1400px; /* Default for mobile/tablet */
   overflow-y: scroll;
+}
+@media (min-width: 1000px) {
+  .tabs-content {
+    max-height: 1000px; /* For desktop */
+  }
 }
 .tabs-content li {
   display: none;
@@ -978,14 +983,14 @@ $(function () {
   var hash = window.location.hash;
   var defaultTab = 'publications'; // Default tab if no specific path is found
 
-  if (hash.includes('research')) {
-    defaultTab = 'research';
-  } else if (hash.includes('patents')) {
-    defaultTab = 'patents';
-  } else if (hash.includes('contact')) {
-    defaultTab = 'contact';
+  // Extract tab name from hash (e.g., #research, #patents, #contact)
+  if (hash && hash.length > 1) {
+    var tabName = hash.substring(1).toLowerCase();
+    // Only activate if the tab exists
+    if ($('#tab-' + tabName).length && $('#content-' + tabName).length) {
+      defaultTab = tabName;
+    }
   }
-  // Add more conditions for other tabs if needed
 
   activateTab(defaultTab);
 
@@ -995,6 +1000,17 @@ $(function () {
     var tabId = $current.attr('id').replace('tab-', '');
     activateTab(tabId);
     window.location.hash = '#' + tabId; // Update URL hash on tab click
+  });
+
+  // Handle browser back/forward navigation (hashchange)
+  window.addEventListener('hashchange', function () {
+    var hash = window.location.hash;
+    if (hash && hash.length > 1) {
+      var tabName = hash.substring(1).toLowerCase();
+      if ($('#tab-' + tabName).length && $('#content-' + tabName).length) {
+        activateTab(tabName);
+      }
+    }
   });
 });
 
