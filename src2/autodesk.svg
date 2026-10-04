@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="Autodesk Research">
+  <rect x="0" y="0" width="240" height="240" fill="#ffffff"/>
+
+  <!-- Simple vector approximation of the Autodesk mark + wordmark -->
+  <g fill="#000000">
+    <!-- Mark -->
+    <path d="M56 84 L124 38 L146 60 L78 106 Z" />
+    <path d="M132 60 L196 60 L196 84 L170 84 L170 106 L132 106 Z" />
+  </g>
+
+  <!-- Wordmark -->
+  <text x="120" y="160" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="34" font-weight="700" fill="#000000">AUTODESK</text>
+  <text x="120" y="198" text-anchor="middle" font-family="Verdana, Arial, sans-serif" font-size="26" fill="#000000">Research</text>
+</svg>
