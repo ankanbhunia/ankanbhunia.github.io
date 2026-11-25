@@ -8,213 +8,567 @@
 
 
 <style>
-#dmimage {
-transition: transform 0.5s;
-}
-#dmimage:hover {
-transform: scale(1.2);
-}
+* { box-sizing: border-box; }
 
-#figimage {
-transition: transform 0.5s;
-}
-#figimage:hover {
-transform: scale(1.1);
+body {
+  margin: 0;
+  padding: 28px 16px;
+  background: #f3f6fa;
+  color: #152c49;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
 }
 
-
-body { padding : 20px 0; font-size : 20px; background-image : url("bg.png");} 
-
-.img-circle {
-    border-radius: 50%;
+button, input { font: inherit; }
+a { overflow-wrap: anywhere; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #1772d0;
+  outline-offset: 3px;
 }
 
-.shadow {box-shadow: rgba(0, 0, 0, 0.15) 6.00px 6.00px 2.6px;}
-.shadow2  {box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;}
-.leftSideBar{display:none !important;}
-.rightSideBar{display:none !important;}
-
-.site-footer {
-
-  text-align: center;
-  margin: 0px 0;
-  padding: 0px 0;
+.site-frame {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid #dce4ee;
+  border-radius: 18px;
+  box-shadow: 0 8px 36px rgba(23, 63, 112, 0.06);
 }
 
-#social-wrapper {
-  text-align: center;
+.site-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 28fr) minmax(0, 72fr);
+  gap: 28px;
+  align-items: start;
 }
 
-/*Social Media src2/icons*/
-.social-wrapper {
-  text-align: center;
+.profile-sidebar, .main-content { min-width: 0; }
+.profile-sidebar { display: grid; gap: 18px; }
+.sidebar-panel, .about-panel {
+  padding: 20px;
+  border: 1px solid #dce4ee;
+  border-radius: 12px;
+  background: #fff;
 }
 
-.social-wrapper ul li {
-  display: inline;
-  margin: 0 5px;
+.sidebar-panel h2, .about-panel h2 {
+  margin: 0 0 16px;
+  color: #173f70;
+  font-size: 18px;
+  line-height: 1.35;
 }
 
-.twitter-icon,
-.facebook-icon,
-.instagram-icon,
-.linkedin-icon,
-.googleplus-icon,
-.youtube-icon,
-.foursquare-icon{
-  margin-top: .625em;
-  width: 20px;
-  height: 20px;
-  opacity: .6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-  border-radius: 25px;
+.profile-card { text-align: center; background: #f7faff; }
+.profile-photo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 12px rgba(23, 63, 112, 0.1);
 }
-
-.twitter-icon:hover,
-.facebook-icon:hover,
-.instagram-icon:hover,
-.linkedin-icon:hover,
-.googleplus-icon:hover,
-.youtube-icon:hover,
-.foursquare-icon:hover {
-  opacity: 1.0;
-  filter: alpha(opacity=100); /* For IE8 and earlier */
+.profile-card h1 { margin: 0; font-size: 26px; line-height: 1.25; color: #152c49; }
+.profile-email { margin: 10px 0 16px; color: #526174; font-size: 14px; overflow-wrap: anywhere; }
+.profile-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.profile-links a, .site-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid #cbd9e9;
+  border-radius: 6px;
+  color: #24568c;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
 }
+.profile-links a:hover, .site-button:hover { background: #edf4fc; border-color: #1772d0; color: #133c6b; }
 
-.footer-nav p {
-  text-align: center;
-}
+.news-list { list-style: none; padding: 0; margin: 0; overflow-x: auto; }
+.news-list li { display: flex; align-items: baseline; gap: 5px; padding: 4px 0; border-top: 1px solid #e6edf5; white-space: nowrap; }
+.news-list li:first-child { padding-top: 0; border-top: 0; }
+.news-list li:last-child { padding-bottom: 0; }
+.news-list time { flex-shrink: 0; font-size: 12px; color: #526174; font-weight: 600; }
+.news-list span { line-height: 1.5; }
+.news-more { margin-top: 12px; }
+.news-more summary { cursor: pointer; color: #24568c; font-size: 14px; font-weight: 600; }
+.news-more summary:focus-visible { outline: 2px solid #1772d0; outline-offset: 3px; }
+.news-more .news-list { margin-top: 8px; }
 
-.column {
-  float: left;
-  padding: 5px;
-}
+.affiliation { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 10px; }
+.affiliation + .affiliation { margin-top: 18px; padding-top: 18px; border-top: 1px solid #e6edf5; }
+.affiliation img { width: 36px; height: 40px; object-fit: contain; }
+.affiliation h3 { margin: 0 0 5px; font-size: 14px; line-height: 1.45; }
+.affiliation p { margin: 0; line-height: 1.5; }
+.affiliation .affiliation-date { margin-top: 5px; color: #526174; font-size: 12px; }
 
-.left {
-  width: 34%;
-
-}
-
-.right {
-  width: 66%;
-
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}*/
+.about-panel { padding: 24px; }
+.about-panel h2 { font-size: 22px; }
+.about-panel p { margin: 0; color: #000; line-height: 1.7; }
+.about-panel p + p { margin-top: 14px; }
 
 .tabs {
-  margin: 20px;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   list-style: none;
-  position: relative;
-  border-bottom: 1px solid #ccc;
+  margin: 24px 0;
+  padding: 6px;
+  border: 1px solid #dce4ee;
+  border-radius: 10px;
+  background: #f3f6fa;
 }
-.tabs .active-tab {
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  border-bottom: none;
-  position: relative;
-  color: black;
-}
-.tabs .active-tab:after {
+.tabs li { flex: 1; }
+.tabs button {
   width: 100%;
-  height: 2px;
-  position: absolute;
-  content: "";
-  bottom: -0.1em;
-  left: 0;
-  background: white;
-}
-.tabs li {
-  display: inline-block;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #42648b;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  color: #3a5ea7;
-  padding: 5px 10px;
 }
-.tabs li:first-child {
-  margin-left: 10px;
-}
+.tabs button:hover { background: #e5edf7; color: #173f70; }
+.tabs .active-tab button { background: #173f70; color: #fff; box-shadow: 0 2px 5px rgba(23, 63, 112, 0.15); }
+.tabs-content { list-style: none; margin: 0; padding: 0 5px 5px; max-height: 1000px; overflow-y: auto; }
+.tabs-content > li { display: none; }
 
-.tabs-content {
-  margin: 20px;
-  padding: 0;
-  list-style: none;
-  max-height: 1400px; /* Default for mobile/tablet */
-  overflow-y: scroll;
-}
-@media (min-width: 1000px) {
-  .tabs-content {
-    max-height: 1000px; /* For desktop */
+@media (min-width: 761px) {
+  .profile-sidebar {
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    align-content: start;
+    scrollbar-width: thin;
+  }
+
+  .main-content:has(#tab-publications.active-tab) .tabs-content,
+  .main-content:has(#tab-research.active-tab) .tabs-content {
+    max-height: none;
+    overflow: visible;
   }
 }
-.tabs-content li {
-  display: none;
+
+.section-header { margin-bottom: 22px; padding: 18px 20px; border-left: 4px solid #1772d0; border-radius: 4px 12px 12px 4px; background: #edf4fc; }
+.section-header h2 { margin: 0; color: #173f70; font-size: 22px; line-height: 1.35; }
+.patent-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.patent-card { min-width: 0; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #dce4ee; border-radius: 12px; background: #fff; }
+.patent-content { padding: 18px; flex: 1; }
+.patent-content .publication-venue { display: inline-block; }
+.patent-card h3 { margin: 14px 0; font-size: 18px; line-height: 1.45; }
+.patent-card > img { display: block; width: 100%; height: auto; border-top: 1px solid #e6edf5; }
+.contact-card { overflow: hidden; border: 1px solid #dce4ee; border-radius: 12px; }
+.contact-details { padding: 24px; }
+.contact-details h3 { margin: 0 0 8px; font-size: 20px; }
+.contact-details p { margin: 0; color: #526174; }
+.contact-emails { display: grid; gap: 10px; margin-top: 20px; }
+.contact-card iframe { display: block; width: 100%; height: 280px; border: 0; border-top: 1px solid #e6edf5; }
+
+.site-footer { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 28px; padding-top: 22px; border-top: 1px solid #dce4ee; }
+.site-footer p { margin: 0; color: #526174; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.footer-links a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid #dce4ee; border-radius: 8px; }
+.footer-links a:hover { background: #edf4fc; border-color: #1772d0; }
+.footer-links img { width: 18px; height: 18px; object-fit: contain; }
+
+@media (max-width: 760px) {
+  body { padding: 12px; }
+  .site-frame { padding: 16px; border-radius: 12px; }
+  .site-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .profile-sidebar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .profile-card { grid-column: 1 / -1; }
+  .tabs-content { max-height: none; overflow: visible; }
+  .about-panel { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .profile-sidebar { grid-template-columns: minmax(0, 1fr); }
+  .tabs { gap: 4px; }
+  .tabs li { flex-basis: calc(50% - 4px); }
+  .patent-grid { gap: 10px; }
+  .patent-content { padding: 12px; }
+  .patent-card h3 { font-size: 16px; }
 }
 
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: flex-start; /* Changed from center to flex-start for left alignment */
-    padding: 10px;
+#content-publications {
+  padding: 0 0 12px;
+  font-family: var(--font-family-primary);
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 48%;
-    padding: 10px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  
+.publications-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  background: #edf4fc;
+  border-left: 4px solid #1772d0;
+  border-radius: 4px 12px 12px 4px;
 }
 
-.card h2 {
+.publications-header h2 {
+  margin: 0;
+  color: #173f70;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.publications-scholar {
+  padding: 8px 12px;
+  background: #fff;
+  color: #24568c;
+  border: 1px solid #cbd9e9;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.publication-year + .publication-year,
+.show-all-toggle + .publication-year {
+  margin-top: 30px;
+}
+
+.publication-year h3 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 14px;
+  font-size: 20px;
+  color: #173f70;
+}
+
+.publication-year h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #dce4ee;
+}
+
+.publication-list {
+  display: grid;
+  gap: 18px;
+}
+
+.publication-card {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #dce4ee;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(23, 63, 112, 0.04);
+}
+
+.publication-thumbnail {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid #e6edf5;
+  border-radius: 8px;
+  background: #f7f9fc;
+}
+
+.publication-thumbnail img,
+.publication-thumbnail video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.publication-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.publication-note {
+  font-size: 12px;
+  color: #526174;
+}
+
+.publication-details h4 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.publication-details h4 a {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 600;
+  color: #152c49;
+}
+
+.publication-details h4 a:hover {
+  color: #1772d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.publication-authors {
+  margin: 10px 0 0;
+  color: #526174;
+  line-height: 1.6;
+}
+
+.publication-authors strong {
+  color: #152c49;
+}
+
+.publication-links {
+  margin-top: 14px;
+}
+
+#content-publications a:focus-visible {
+  outline: 2px solid #1772d0;
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .publication-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .publication-thumbnail {
     margin-top: 0;
+    width: 144px;
+  }
 }
 
-.card p {
-    color: #555;
+#content-research {
+  font-family: var(--font-family-primary);
+  padding: 0 0 12px;
 }
 
-.card:hover {
-    transform: scale(1.1); /* Enlarge to 1.3x */
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10; /* Bring to front */
-    position: relative; /* Needed for z-index to work */
-}
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
+.research-section + .research-section {
+  margin-top: 44px;
 }
 
 .research-heading {
-  font-size: 1.3em; /* Larger font */
-  font-weight: normal; /* No bold */
-  color: #333; /* A slightly darker color for better style */
-  margin-top: 20px;
-  margin-bottom: 15px;
-  padding-left: 10px; /* Align with card-container padding */
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #173f70;
+  background-color: #edf4fc;
+  border-left: 4px solid #1772d0;
+  border-radius: 4px 12px 12px 4px;
+  margin: 0 0 22px;
+  padding: 18px 20px;
+}
+
+.research-topic-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #42648b;
+}
+
+.research-projects {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 30px;
+}
+
+.show-all-toggle {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid #b3cae6;
+  border-radius: 12px;
+  background: #edf4fc;
+  color: #173f70;
+  text-align: left;
+  cursor: pointer;
+}
+
+.show-all-toggle:hover { background: #e1edfb; border-color: #1772d0; }
+.show-all-toggle-label { display: block; font-size: 16px; font-weight: 600; }
+.show-all-toggle-chevron {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.show-all-toggle[aria-expanded="true"] .show-all-toggle-chevron { transform: rotate(225deg); }
+
+.research-project {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dce4ee;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(23, 63, 112, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.research-project:hover {
+  transform: scale(1.01);
+  border-color: #7da5d6;
+  box-shadow: 0 8px 24px rgba(23, 63, 112, 0.1);
+}
+
+.research-project-content {
+  padding: 22px;
+}
+
+.research-project-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+.research-project-header h4 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #152c49;
+}
+
+.research-venue,
+.publication-venue {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #edf4fc;
+  color: #24568c;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.research-coming-soon {
+  color: #526174;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.research-project-content p {
+  margin: 14px 0 0;
+  font-size: var(--font-size-base);
+  font-weight: normal;
+  line-height: 1.6;
+  color: #000;
+  text-align: left;
+}
+
+.research-category {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 2px 7px;
+  border: 1px solid #ddd0f0;
+  border-radius: 6px;
+  background: #f4effb;
+  color: #6941a5;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.research-category + p {
+  margin-top: 10px;
+}
+
+.research-links,
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.research-links a,
+.publication-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #cbd9e9;
+  border-radius: 6px;
+  color: #24568c;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.research-links a:hover,
+.publication-links a:hover {
+  color: #133c6b;
+  border-color: #1772d0;
+  background: #edf4fc;
+}
+
+.research-links a:focus-visible {
+  outline: 2px solid #1772d0;
+  outline-offset: 3px;
+}
+
+.research-media {
+  border-top: 1px solid #e6edf5;
+  background: #f7f9fc;
+}
+
+.research-media img,
+.research-media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 700px) {
+  #content-research {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+
+  .research-heading {
+    padding: 14px 16px;
+    font-size: 20px;
+  }
+
+  .research-project-content {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-project {
+    transition: none;
+  }
+
+  .research-project:hover {
+    transform: none;
+  }
 }
 
 .conference-highlight {
@@ -259,7 +613,7 @@ ga('send', 'pageview');
   
   <meta name="author" content="Jon Barron">
  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-<meta name="viewport" content="width=700">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
   
  <link rel = "icon" type = "image/png" href = "./src2/ju.png">
@@ -267,703 +621,629 @@ ga('send', 'pageview');
 
 
 
-<body  data-new-gr-c-s-check-loaded="14.1023.0" data-gr-ext-installed="">
-  <div style="font-family:Courier; ">
-  <table style="width:100%;max-width:950px;border:0px;border-spacing:0px;background-color : #fff;box-shadow: 0px 0px 10px #999;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-			
-			 <div id="container">
-			  <div class="column left">
-			<table border="0" cellpadding="0" cellspacing="4">
-
-			  <tbody style="text-align:center"><tr><td valign="top" rowspan="6"><img id="dmimage" height="100" border="0" class="img-circle" src="im1.png" onmouseover="changeImage()" onmouseout="restoreImage()">
-			</tbody>
-			  <td style="text-align:center" valign="top" colspan="1"><h2 style="font-weight: normal; font-size: 1.5em;">Ankan Bhunia<br></h2>
-
-
-          <p style="font-size: 13px; margin-top: -14px">ankan.bhunia [at] ed.ac.uk</p>
-
-			    <p style="text-align:center">
-
-                <!-- <a href="mailto:ankankumarbhunia@gmail.com">Email</a> &nbsp;/&nbsp; -->
-                <a href="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/Resume/Ankan_Resume.pdf">Resume</a> &nbsp;/&nbsp;
-                <a href="https://scholar.google.com/citations?user=2leAc3AAAAAJ&hl=engi">Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://github.com/ankanbhunia">GitHub</a>&nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/ankan-kumar-bhunia/">Linkedin</a>
-              </p></td>
-        </table>
-
-      
-    <h2>Recent News</h2>
-	 <b>[09/2025]</b>: 1 paper at <a href="https://neurips.cc/">NeurIPS 2025</a><br>
-    <b>[02/2025]</b>: 1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2025</a><br>
-      <!-- <b>[10/2024]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US20240161360A1/en">(link)</a><br> -->
-    <b>[02/2024]</b>: 1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2024</a><br>
-    <!-- <b>[10/2023]</b>: 1 US patent granted <a href="https://patents.google.com/patent/US11756244B1/en/">(link)</a><br> -->
-     <b>[07/2023]</b>: 1 paper at <a href="https://iccv2023.thecvf.com/">ICCV 2023</a><br>
-    <b>[06/2023]</b>: 1 paper at <a href="https://conferences.miccai.org/2023/en/">MICCAI 2023</a><br>
-    <b>[02/2023]</b>: 1 paper at <a href="http://cvpr2023.thecvf.com/">CVPR 2023</a><br>
-	<b>[07/2022]</b>: 1 paper at <a href="https://eccv2022.ecva.net/">ECCV 2022</a><br>
-	<b>[07/2021]</b>: 1 paper at <a href="http://iccv2021.thecvf.com/home">ICCV 2021</a><br>
-	<b>[10/2019]</b>: 1 paper at <a href="https://www.journals.elsevier.com/information-fusion">Information Fusion</a><br>
-    <b>[07/2019]</b>: 1 paper at <a href="https://www.journals.elsevier.com/pattern-recognition">Pattern Recognition</a><br>
-    <b>[03/2019]</b>: 1 paper at <a href="http://cvpr2019.thecvf.com//">CVPR 2019</a><br>
-	<b>[05/2019]</b>: 1 paper at <a href="http://2019.ieeeicip.org/">ICIP 2019</a><br>
-    <!-- <b>[05/2019]</b>: 1 paper at <a href="https://link.springer.com/journal/521">Neural Computing and Application</a><br> 
-	<b>[08/2018]</b>: 1 paper at <a href="https://www.journals.elsevier.com/pattern-recognition">Pattern Recognition</a><br>
-    <b>[04/2018]</b>: 3 papers at <a href="http://www.icpr2018.org/">ICPR 2018</a><br> -->
-
-	  
-<p></p>
-    <h2 style="display:inline;">Education</h2>
-    <!--<div style="top:-10px; position:relative;">-->
-
-    <p></p>
-  
-    <table border="0" cellpadding="0" cellspacing="4">
-
-    <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0", src="./src2/uoe.png">
-
-    </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>University of Edinburgh, UK</b></span>
-  
-    <br><em>PhD at School of Informatics</em><br> 
-          May 2023 - Present
-  </td></tr></tbody></table>
-     
-	<p></p>
-	
-  	<table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0", src="./src2/ju.png">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>Jadavpur University, India</b></span>
-	
-	  <br><em>B.E. in Electrical Engineering</em><br> 
-          July 2016 - May 2020
-	</td></tr></tbody></table>
-
-		
-		
-<p></p>
-    <h2 style="display:inline;">Research Experiences</h2>
-		<p></p>
-	
-	  <table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/autodesk.svg">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>Autodesk Research, London</b></span>
-	
-	  <br><em>Research Intern at AI Lab</em><br> 
-	  June 2026 - August 2026
-	  
-	</td></tr></tbody></table>
-	
-	<p></p>
-	
-	 <table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/mbzuai.png">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>MBZUAI, Abu Dhabi</b></span>
-	
-	  <br><em>Researcher, Intelligent Visual Analytics Lab</em>.<br> 
-	  Nov 2020 - Apr 2023 </a>
-	  
-	</td></tr></tbody></table>
-	
-	<p></p>
-	
-  	<table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/UOM.png">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>University of Manitoba, Winnipeg, Canada</b></span>
-	
-	  <br><em>MITACS Internship</em>, 2019.<br> 
-	  May 2019 - August 2019 </a>
-	  
-	</td></tr></tbody></table>
-	<p></p>
-	<table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/bosch.jpg">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>Robert Bosch, Bangalore</b></span>
-	
-	  <br><em>Intern, Computer Vision Lab</em><br> 
-	  June 2018 - July 2018 </tbody></table>
-		<p></p>
-	<!-- <table border="0" cellpadding="0" cellspacing="4">
-
-	  <tbody><tr><td valign="middle" rowspan="6"><img height="60" border="0" src="./src2/iitr.png">
-
-	  </td></tr><tr><td></td><td></td><td></td><td></td><td></td><td valign="top" colspan="2"><span class="h1"><b>IIT Roorkee, India</b></span>
-	
-	  <br><em>Under Prof. Partha Pratim Roy</em><br>
-	  June 2017 - May 2020
-	</td></tr></tbody></table> -->
-
-
-
-</div>
-
-<div class="column right" style="margin-left:-10px">
-
-
-  
- 
-<!--   	  <h2>Research</h2>
-	  <p>
-		I am broadly interested in computer vision, machine learning, and AI. I mostly work on generative models and visual perception models from a small amount of data. 
-	  </p> -->
-    
-<br>
-      <p style="padding-left: 15px; padding-right: 0px; text-align: justify">
-         
-	   <font style="color: black;"> I'm a final year PhD student in the <a href="https://www.ed.ac.uk/informatics">School of Informatics</a> at the <a href="https://en.wikipedia.org/wiki/University_of_Edinburgh">University of Edinburgh</a>. I work with <a href=https://homepages.inf.ed.ac.uk/hbilen/>Dr. Hakan Bilen</a> in the <a href=https://groups.inf.ed.ac.uk/vico/>Visual Computing Group</a> (VICO) and <a href=https://enigma-li.github.io/>Dr. Changjian Li</a> from GraphVix lab. </font> <font style="color: black;">During my PhD, I worked as a Research Intern at <a href="https://www.research.autodesk.com/">Autodesk Research</a>, where I built VLM agents and worked on Agent Optimization.</font>
-	 <font style="color: black;"> Previously, I was a full-time research assistant at MBZUAI, Abu Dhabi, where I worked on computer vision and machine learning with <a href="https://sites.google.com/view/fahadkhans/home">Dr Fahad Shahbaz Khan</a>, <a href="https://salman-h-khan.github.io/">Dr Salman Khan</a> and <a href="https://scholar.google.com/citations?hl=en&user=bZ3YBRcAAAAJ&view_op=list_works&sortby=pubdate">Dr Hisham Cholakkal</a>. During my undergrad, I had worked with <a href="https://users.encs.concordia.ca/~wayang/">Dr Yang Wang</a> at the University of Manitoba, Canada and <a href="http://parimal.iitr.ac.in/people/partha-pratim-roy">Dr Partha Roy</a> at IIT Roorkee, India. I did my bachalors from <a href="https://en.wikipedia.org/wiki/Jadavpur_University">Jadavpur University</a>, Kolkata in Electrical Engineering.
-
-    </p>
-
-<ul class="tabs">
-  <li class="active-tab" id="tab-publications">Publications</li>
-  <li id="tab-research">Research</li>
-  <li id="tab-patents">Patents</li>
-  <!-- <li>CV/Resume</li> -->
-  <li id="tab-contact">Contact</li>
-</ul>
-
-<ul class="tabs-content">
+<body>
+<div class="site-frame">
+  <div class="site-layout">
+    <aside class="profile-sidebar" aria-label="Profile and background">
+      <section class="sidebar-panel profile-card">
+        <img id="dmimage" class="profile-photo" src="im1.png" alt="Ankan Bhunia" onmouseover="changeImage()" onmouseout="restoreImage()">
+        <h1>Ankan Bhunia</h1>
+        <p class="profile-email">ankan.bhunia [at] ed.ac.uk</p>
+        <nav class="profile-links" aria-label="Profile links">
+          <a href="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/Resume/Ankan_Resume.pdf">Resume</a>
+          <a href="https://scholar.google.com/citations?user=2leAc3AAAAAJ&amp;hl=engi">Google Scholar</a>
+          <a href="https://github.com/ankanbhunia">GitHub</a>
+          <a href="https://www.linkedin.com/in/ankan-kumar-bhunia/">Linkedin</a>
+        </nav>
+      </section>
+      <section class="sidebar-panel" hidden>
+        <h2>Recent News</h2>
+        <ul class="news-list">
+          <li><time>09/2025</time><span>1 paper at <a href="https://neurips.cc/">NeurIPS 2025</a></span></li>
+          <li><time>02/2025</time><span>1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2025</a></span></li>
+          <li><time>02/2024</time><span>1 paper at <a href="https://cvpr.thecvf.com/">CVPR 2024</a></span></li>
+          <li><time>07/2023</time><span>1 paper at <a href="https://iccv2023.thecvf.com/">ICCV 2023</a></span></li>
+          <li><time>06/2023</time><span>1 paper at <a href="https://conferences.miccai.org/2023/en/">MICCAI 2023</a></span></li>
+          <li><time>02/2023</time><span>1 paper at <a href="http://cvpr2023.thecvf.com/">CVPR 2023</a></span></li>
+          <li><time>07/2022</time><span>1 paper at <a href="https://eccv2022.ecva.net/">ECCV 2022</a></span></li>
+          <li><time>07/2021</time><span>1 paper at <a href="http://iccv2021.thecvf.com/home">ICCV 2021</a></span></li>
+        </ul>
+        <details class="news-more">
+          <summary>More</summary>
+          <ul class="news-list">
+          <li><time>10/2019</time><span>1 paper at <a href="https://www.journals.elsevier.com/information-fusion">Information Fusion</a></span></li>
+          <li><time>07/2019</time><span>1 paper at <a href="https://www.journals.elsevier.com/pattern-recognition">Pattern Recognition</a></span></li>
+          <li><time>03/2019</time><span>1 paper at <a href="http://cvpr2019.thecvf.com//">CVPR 2019</a></span></li>
+          <li><time>05/2019</time><span>1 paper at <a href="http://2019.ieeeicip.org/">ICIP 2019</a></span></li>
+          </ul>
+        </details>
+      </section>
+      <section class="sidebar-panel">
+        <h2>Education</h2>
+        <article class="affiliation">
+          <img src="./src2/uoe.png" alt="" loading="lazy">
+          <div><h3>University of Edinburgh, UK</h3><p>PhD at School of Informatics</p><p class="affiliation-date">May 2023 - Present</p></div>
+        </article>
+        <article class="affiliation">
+          <img src="./src2/ju.png" alt="" loading="lazy">
+          <div><h3>Jadavpur University, India</h3><p>B.E. in Electrical Engineering</p><p class="affiliation-date">July 2016 - May 2020</p></div>
+        </article>
+      </section>
+      <section class="sidebar-panel">
+        <h2>Research Experiences</h2>
+        <article class="affiliation">
+          <img src="./src2/autodesk.svg" alt="" loading="lazy">
+          <div><h3>Autodesk Research, London</h3><p>Research Intern at AI Lab</p><p class="affiliation-date">June 2026 - August 2026</p></div>
+        </article>
+        <article class="affiliation">
+          <img src="./src2/mbzuai.png" alt="" loading="lazy">
+          <div><h3>MBZUAI, Abu Dhabi</h3><p>Researcher, Intelligent Visual Analytics Lab</p><p class="affiliation-date">Nov 2020 - Apr 2023</p></div>
+        </article>
+        <article class="affiliation">
+          <img src="./src2/UOM.png" alt="" loading="lazy">
+          <div><h3>University of Manitoba, Winnipeg, Canada</h3><p>MITACS Internship</p><p class="affiliation-date">2019. May 2019 - August 2019</p></div>
+        </article>
+        <article class="affiliation">
+          <img src="./src2/bosch.jpg" alt="" loading="lazy">
+          <div><h3>Robert Bosch, Bangalore</h3><p>Intern, Computer Vision Lab</p><p class="affiliation-date">June 2018 - July 2018</p></div>
+        </article>
+      </section>
+    </aside>
+    <main class="main-content">
+      <section class="about-panel" aria-label="About">
+        <p>I'm a final-year PhD student in the <a href="https://www.ed.ac.uk/informatics">School of Informatics</a> at the <a href="https://en.wikipedia.org/wiki/University_of_Edinburgh">University of Edinburgh</a>, where I work on 3D computer vision and multi-modal machine learning. I collaborate with <a href="https://homepages.inf.ed.ac.uk/hbilen/">Dr. Hakan Bilen</a> in the <a href="https://groups.inf.ed.ac.uk/vico/">Visual Computing Group</a> (VICO) and <a href="https://enigma-li.github.io/">Dr. Changjian Li</a> from the GraphVix lab.</p>
+        <p>I previously interned at <a href="https://www.research.autodesk.com/">Autodesk Research</a>, developing VLM agents and working on agent optimization. Before that, I was a full-time research assistant at MBZUAI in Abu Dhabi, working on computer vision and machine learning with <a href="https://sites.google.com/view/fahadkhans/home">Dr. Fahad Shahbaz Khan</a>, <a href="https://salman-h-khan.github.io/">Dr. Salman Khan</a>, and <a href="https://scholar.google.com/citations?hl=en&amp;user=bZ3YBRcAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Dr. Hisham Cholakkal</a>.</p>
+        <p>I earned my bachelor's degree in Electrical Engineering from <a href="https://en.wikipedia.org/wiki/Jadavpur_University">Jadavpur University</a> in Kolkata. As an undergraduate, I also worked with <a href="https://users.encs.concordia.ca/~wayang/">Dr. Yang Wang</a> at the University of Manitoba, Canada, and <a href="http://parimal.iitr.ac.in/people/partha-pratim-roy">Dr. Partha Roy</a> at IIT Roorkee, India.</p>
+      </section>
+      <nav aria-label="Main sections">
+        <ul class="tabs">
+          <li class="active-tab" id="tab-publications"><button type="button" aria-pressed="true">Publications</button></li>
+          <li id="tab-research"><button type="button" aria-pressed="false">Research</button></li>
+          <li id="tab-patents"><button type="button" aria-pressed="false">Patents</button></li>
+          <li id="tab-contact"><button type="button" aria-pressed="false">Contact</button></li>
+        </ul>
+      </nav>
+      <ul class="tabs-content">
   <li id="content-publications">
-<div>
-
-  
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-             <div style="margin-left:15px;"> More details are available on <a href="https://scholar.google.com/citations?user=2leAc3AAAAAJ&hl=en">Google Scholar</a></div><br>
-
-
-             <tr>
-              <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src="./src2/iad.jpg" height="90", width="120" style="margin-left:10px;">
-                <br>
-                <br>
-  
-              </td>              
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://openreview.net/pdf?id=t22zHB6yQ0">
-                  <papertitle>Interactive Anomaly Detection for Articulated Objects via Motion Anticipation</papertitle></a>
-                - [<a href="https://groups.inf.ed.ac.uk/vico/research/interactiveAD/"><em style="color: #767872;">webpage</em></a>] / [<a href="https://openreview.net/pdf?id=t22zHB6yQ0"><em style="color: #767872;">paper</em></a>] / [<a href="https://openreview.net/forum?id=t22zHB6yQ0"><em style="color: #767872;">openreview</em></a>]
-                <br>
-                <strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen,
-                <br>
-                <strong style="color: indianred;"><em>NeurIPS</em>, 2025</strong>  (Main Track)<br>
-                <br>
-                <!-- -->
-            <tr>
-
-
-             <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/o3.jpg" height="90", width="120" style="margin-left:10px;">
-              <br>
-              <br>
-
-            </td>              
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2406.20099">
-                <papertitle>Odd-One-Out: Anomaly Detection by Comparing with Neighbors</papertitle></a>
-              - [<a href="https://arxiv.org/abs/2406.20099"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/VICO-UoE/OddOneOutAD"><em style="color: #767872;">code</em></a>] / [<a href="https://huggingface.co/datasets/ankankbhunia/odd-one-out"><em style="color: #767872;">dataset</em></a>]
-              <br>
-              <strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen,
-              <br>
-              <strong style="color: indianred;"><em>CVPR</em>, 2025</strong><br>
-              <br>
-              <!-- -->
-          <tr>
-
-
-             <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/looking3d.jpg" height="90", width="120" style="margin-left:10px;">
-
-            </td>              
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">
-                <papertitle>Looking 3D: Anomaly Detection with 2D-3D Alignment</papertitle>              </a>
-              - [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf"><em style="color: #767872;">paper</em></a>] / [<a href="https://huggingface.co/datasets/ankankbhunia/brokenchairs180k/tree/main"><em style="color: #767872;">dataset</em></a>] / [<a href="https://github.com/VICO-UoE/Looking3D"><em style="color: #767872;">code</em></a>] / [<a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/"><em style="color: #767872;">webpage</em></a>]
-              <br>
-              <strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen,
-              <br>
-              <strong style="color: indianred;"><em>CVPR</em>, 2024</strong><br>
-              <!-- -->
-          <tr>
-
-
-               <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/gmnr.png" height="90", width="120" style="margin-left:10px;">
-
-            </td>              
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2304.01172">
-                <papertitle>Generative Multiplane Neural Radiance for 3D-Aware Image Generation</papertitle>              </a>
-                 - [<a href="https://arxiv.org/abs/2304.01172"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/VIROBO-15/GMNR"><em style="color: #767872;">code</em></a>] 
-              <br>
-              Amandeep Kumar,
-              <strong>Ankan Bhunia</strong>, Sanath Narayan, Hisham Cholakkal,
-              Rao Anwer,
-              <aa href="https://salman-h-khan.github.io/">Salman Khan</a>, Ming-Hsuan Yang,
-              <aa href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a>,
-              <br>
-              <strong style="color: indianred;"><em>ICCV</em>, 2023</strong><br>
-              <!-- -->
-
-
-          <tr>
-
-
-
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/pidm.png" height="90", width="120" style="margin-left:10px;">
-
-            </td>              
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2211.12500">
-                <papertitle>Person Image Synthesis via Denoising Diffusion Model</papertitle>              </a>
-
-             
-                - [<a href="https://arxiv.org/abs/2211.12500"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/ankanbhunia/PIDM"><em style="color: #767872;">code</em></a>] / [<a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"><em style="color: #767872;">demo</em></a>] / [<a href="https://ankanbhunia.github.io/PIDM/"><em style="color: #767872;">webpage</em></a>] <br>
-              <strong>Ankan Bhunia</strong>,
-              Salman Khan,
-              Hisham Cholakkal,
-              Rao Anwer,
-        Jorma Laaksonen,
-        Mubarak Shah,
-              Fahad Khan,
-       
-              <br>
-              <strong style="color: indianred;"><em>CVPR</em>, 2023</strong><br>
-
-     
-            </td>
-          </tr>
-
-
-
-
-
-          <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/xmgan.png" height="90", width="120" style="margin-left:10px;">
-
-            </td>              
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_13">
-                <papertitle>Cross-modulated Few-shot Image Generation for Colorectal Tissue Classification</papertitle>              </a>
-                 - [<a href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_13"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/VIROBO-15/XM-GAN"><em style="color: #767872;">code</em></a>] 
-              <br>
-              Amandeep Kumar, <strong>Ankan Bhunia</strong>, Sanath Narayan, Hisham Cholakkal, Rao Anwer, Jorma Laaksonen, Fahad Khan,
-              <br>
-              <strong style="color: indianred;"><em>MICCAI</em>, 2023</strong><br>
-              <!-- -->
-
-
-          <tr>
-
-
-          <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/doodles.png" height="90", width="120" style="margin-left:10px;">
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2112.03258">
-                <papertitle>DoodleFormer: Creative Sketch Drawing with Transformers</papertitle>
-              </a>
-              - [<a href="https://arxiv.org/abs/2112.03258"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/ankanbhunia/doodleformer"><em style="color: #767872;">code</em></a>] / [<a href="https://ankanbhunia.github.io/doodleformer/"><em style="color: #767872;">webpage</em></a>] 
-              <br>
-              <strong>Ankan Bhunia</strong>,
-              Salman Khan,
-              Hisham Cholakkal,
-              Rao Anwer,
-              Fahad Khan,
-        Jorma Laaksonen,
-        Michael Felsberg,
-              <br>
-              <strong style="color: indianred;"><em>ECCV</em>, 2022</strong>
-
-              
-            </td>
-          </tr>
-
-          <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-              <img id="figimage" class=shadow src="./src2/hwt.png" height="90", width="120" style="margin-left:10px;">
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/2104.03964">
-                <papertitle>Handwriting Transformers</papertitle>
-              </a>
-              - [<a href="https://arxiv.org/abs/2104.03964"><em style="color: #767872;">paper</em></a>] / [<a href="https://github.com/ankanbhunia/Handwriting-Transformers"><em style="color: #767872;">code</em></a>] / [<a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb"><em style="color: #767872;">demo</em></a>] / [<a href="https://ankanbhunia.github.io/Handwriting-Transformers/"><em style="color: #767872;">webpage</em></a>] / [<a href="https://www.bloomberg.com/news/articles/2024-01-15/after-voice-clones-and-deepfake-videos-ai-can-now-mimic-handwriting?"><em style="color: #767872;">bloomberg article</em></a>] / [<a href="https://patents.google.com/patent/US11756244B1/en"><em style="color: #767872;">patent</em></a>] 
-
-
-
-              <br>
-              <strong>Ankan Bhunia</strong>,
-              Salman Khan,
-              Hisham Cholakkal,
-              Rao Anwer,
-              Fahad Khan,
-        Mubarak Shah,
-              <br>
-              <strong style="color: indianred;"><em>ICCV</em>, 2021</strong>
-
-              
-            </td>
-          </tr>
-
-      
-          <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im1.png' height="90", width="120" style="margin-left:10px;">  
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html">
-                <papertitle>Handwriting Recognition in Low-resource Scripts using Adversarial Learning</papertitle>
-              </a> - [<a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html"><em style="color: #767872;">paper</em></a>]
-              <br>
-        
-              Ayan Kumar Bhunia,
-              Abhirup Das,
-        <strong>Ankan Bhunia</strong>,
-              Sairaj Kishore,
-              Partha Pratim Roy,
-              <br>
-              <strong style="color: indianred;"><em>CVPR</em>, 2019</strong>
-
-            </td>
-          </tr>
-      
-          <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im2.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1810.11120">
-                <papertitle>Improving Document Binarization via Adversarial Noise-Texture Augmentation</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1810.11120"><em style="color: #767872;">paper</em></a>]
-              <br>
-        <strong>Ankan Bhunia</strong>,
-              Ayan Kumar Bhunia,
-              Aneeshan Sain,
-              Partha Pratim Roy,
-              <br>
-              <strong style="color: indianred;"><em>ICIP</em>, 2019</strong>
-
-            </td>
-          </tr>     
-    
-              <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/PR_logo.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1811.01395">
-                <papertitle>A Deep One-Shot Network for Query-based Logo Retrieval</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1811.01395"><em style="color: #767872;">paper</em></a>]
-              <br>
-        
-              Ayan Kumar Bhunia,
-        <strong>Ankan Bhunia</strong>,
-              Shuvozit Ghose,
-              Partha Pratim Roy,
-        Umapada Pal,
-              <br>
-              <strong style="color: indianred;"><em>Pattern Recognition</em>, 2019</strong>
-
-            </td>
-          </tr>   
-    
-    
-      <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im4.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1801.00470">
-                <papertitle>Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1801.00470"><em style="color: #767872;">paper</em></a>]
-              <br>
-        
-              
-        <strong>Ankan Bhunia</strong>,
-              Aishik Konwer,
-        Abir Bhowmik,
-        Ayan Kumar Bhunia,
-              Partha Pratim Roy,
-      
-              <br>
-              <strong style="color: indianred;"><em>Pattern Recognition</em>, 2019</strong>
-
-            </td>
-          </tr>   
-      
-                    <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im5.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1709.09348">
-                <papertitle>Signature Verification Approach using Fusion of Hybrid Texture Features</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1709.09348"><em style="color: #767872;">paper</em></a>]
-              <br>
-        
-        <strong>Ankan Bhunia</strong>,
-        Alireza Alaei,
-              Partha Pratim Roy,
-
-              <br>
-              <strong style="color: indianred;"><em>Neural computing and Applications</em>, 2019</strong>
-            </td>
-          </tr>   
-        <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im6.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1801.07156">
-                <papertitle>Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1801.07156"><em style="color: #767872;">paper</em></a>]
-              <br>
-        <strong>Ankan Bhunia</strong>,
-        Ayan Kumar Bhunia,
-        Prithaj Banerjee,
-              Aishik Konwer,
-        Abir Bhowmik,
-              Partha Pratim Roy,
-        Umapada Pal,
-              <br>
-              <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
-
-            </td>
-          </tr>   
-      
-        <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im7.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1801.07141">
-                <papertitle>Staff line Removal using Generative Adversarial Networks</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1801.07141"><em style="color: #767872;">paper</em></a>]
-              <br>
-        Aishik Konwer,
-        Ayan Kumar Bhunia,
-        Abir Bhowmik,
-        <strong>Ankan Bhunia</strong>,
-        Prithaj Banerjee,
-
-              Partha Pratim Roy,
-        Umapada Pal,
-              <br>
-              <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
-            </td>
-          </tr>   
-      
-              <tr>
-            <td style="width:200px;height:100px; margin-left:20px;margin-top:15px;">
-                <img id="figimage" class=shadow src='./src2/im8.png' height="90", width="120" style="margin-left:10px;"> 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://arxiv.org/abs/1801.07211">
-                <papertitle>Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network</papertitle>
-              </a> - [<a href="https://arxiv.org/abs/1801.07211"><em style="color: #767872;">paper</em></a>]
-              <br>
-        
-        Ayan Kumar Bhunia,
-        Abir Bhowmik,
-        <strong>Ankan Bhunia</strong>,
-        Aishik Konwer,
-        Prithaj Banerjee,
-              Partha Pratim Roy,
-        Umapada Pal,
-              <br>
-              <strong style="color: indianred;"><em>ICPR</em>, 2018</strong>
-            </td>
-          </tr>   
-      
-            
-      
-        </tbody></table>
-
-</div>
-
-
-</li>
+    <section class="publication-year" aria-labelledby="publications-2026">
+      <h3 id="publications-2026">2026</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <div class="publication-thumbnail">
+            <video autoplay loop muted playsinline aria-label="ZeroART reconstruction preview">
+              <source src="./src2/gifs/zeroart.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="research-coming-soon">(paper / model / code coming soon)</span>
+            </div>
+            <h4>ZeroART: Towards Unconstrained Articulated 3D Reconstruction</h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" aria-labelledby="publications-2025">
+      <h3 id="publications-2025">2025</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://openreview.net/pdf?id=t22zHB6yQ0" aria-label="Read Interactive Anomaly Detection for Articulated Objects via Motion Anticipation">
+            <img src="./src2/iad.jpg" alt="Interactive Anomaly Detection for Articulated Objects via Motion Anticipation preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">NeurIPS</span>
+              <span class="publication-note">Main Track</span>
+            </div>
+            <h4><a href="https://openreview.net/pdf?id=t22zHB6yQ0">Interactive Anomaly Detection for Articulated Objects via Motion Anticipation</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen</p>
+            <nav class="publication-links" aria-label="Resources for Interactive Anomaly Detection for Articulated Objects via Motion Anticipation">
+              <a href="https://groups.inf.ed.ac.uk/vico/research/interactiveAD/">Website</a>
+              <a href="https://openreview.net/pdf?id=t22zHB6yQ0">Paper</a>
+              <a href="https://openreview.net/forum?id=t22zHB6yQ0">OpenReview</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/2406.20099" aria-label="Read Odd-One-Out: Anomaly Detection by Comparing with Neighbors">
+            <img src="./src2/o3.jpg" alt="Odd-One-Out: Anomaly Detection by Comparing with Neighbors preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">CVPR</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/2406.20099">Odd-One-Out: Anomaly Detection by Comparing with Neighbors</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen</p>
+            <nav class="publication-links" aria-label="Resources for Odd-One-Out: Anomaly Detection by Comparing with Neighbors">
+              <a href="https://arxiv.org/abs/2406.20099">Paper</a>
+              <a href="https://github.com/VICO-UoE/OddOneOutAD">Code</a>
+              <a href="https://huggingface.co/datasets/ankankbhunia/odd-one-out">Dataset</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" aria-labelledby="publications-2024">
+      <h3 id="publications-2024">2024</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf" aria-label="Read Looking 3D: Anomaly Detection with 2D-3D Alignment">
+            <img src="./src2/looking3d.jpg" alt="Looking 3D: Anomaly Detection with 2D-3D Alignment preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">CVPR</span>
+            </div>
+            <h4><a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Looking 3D: Anomaly Detection with 2D-3D Alignment</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Changjian Li, Hakan Bilen</p>
+            <nav class="publication-links" aria-label="Resources for Looking 3D: Anomaly Detection with 2D-3D Alignment">
+              <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a>
+              <a href="https://huggingface.co/datasets/ankankbhunia/brokenchairs180k/tree/main">Dataset</a>
+              <a href="https://github.com/VICO-UoE/Looking3D">Code</a>
+              <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">Website</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" aria-labelledby="publications-2023">
+      <h3 id="publications-2023">2023</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/2304.01172" aria-label="Read Generative Multiplane Neural Radiance for 3D-Aware Image Generation">
+            <img src="./src2/gmnr.png" alt="Generative Multiplane Neural Radiance for 3D-Aware Image Generation preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICCV</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/2304.01172">Generative Multiplane Neural Radiance for 3D-Aware Image Generation</a></h4>
+            <p class="publication-authors">Amandeep Kumar, <strong>Ankan Bhunia</strong>, Sanath Narayan, Hisham Cholakkal, Rao Anwer, <a href="https://salman-h-khan.github.io/">Salman Khan</a>, Ming-Hsuan Yang, <a href="https://sites.google.com/view/fahadkhans/home">Fahad Khan</a></p>
+            <nav class="publication-links" aria-label="Resources for Generative Multiplane Neural Radiance for 3D-Aware Image Generation">
+              <a href="https://arxiv.org/abs/2304.01172">Paper</a>
+              <a href="https://github.com/VIROBO-15/GMNR">Code</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/2211.12500" aria-label="Read Person Image Synthesis via Denoising Diffusion Model">
+            <img src="./src2/pidm.png" alt="Person Image Synthesis via Denoising Diffusion Model preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">CVPR</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/2211.12500">Person Image Synthesis via Denoising Diffusion Model</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Salman Khan, Hisham Cholakkal, Rao Anwer, Jorma Laaksonen, Mubarak Shah, Fahad Khan</p>
+            <nav class="publication-links" aria-label="Resources for Person Image Synthesis via Denoising Diffusion Model">
+              <a href="https://arxiv.org/abs/2211.12500">Paper</a>
+              <a href="https://github.com/ankanbhunia/PIDM">Code</a>
+              <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb">Demo</a>
+              <a href="https://ankanbhunia.github.io/PIDM/">Website</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_13" aria-label="Read Cross-modulated Few-shot Image Generation for Colorectal Tissue Classification">
+            <img src="./src2/xmgan.png" alt="Cross-modulated Few-shot Image Generation for Colorectal Tissue Classification preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">MICCAI</span>
+            </div>
+            <h4><a href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_13">Cross-modulated Few-shot Image Generation for Colorectal Tissue Classification</a></h4>
+            <p class="publication-authors">Amandeep Kumar, <strong>Ankan Bhunia</strong>, Sanath Narayan, Hisham Cholakkal, Rao Anwer, Jorma Laaksonen, Fahad Khan</p>
+            <nav class="publication-links" aria-label="Resources for Cross-modulated Few-shot Image Generation for Colorectal Tissue Classification">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-43898-1_13">Paper</a>
+              <a href="https://github.com/VIROBO-15/XM-GAN">Code</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" aria-labelledby="publications-2022">
+      <h3 id="publications-2022">2022</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/2112.03258" aria-label="Read DoodleFormer: Creative Sketch Drawing with Transformers">
+            <img src="./src2/doodles.png" alt="DoodleFormer: Creative Sketch Drawing with Transformers preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ECCV</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/2112.03258">DoodleFormer: Creative Sketch Drawing with Transformers</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Salman Khan, Hisham Cholakkal, Rao Anwer, Fahad Khan, Jorma Laaksonen, Michael Felsberg</p>
+            <nav class="publication-links" aria-label="Resources for DoodleFormer: Creative Sketch Drawing with Transformers">
+              <a href="https://arxiv.org/abs/2112.03258">Paper</a>
+              <a href="https://github.com/ankanbhunia/doodleformer">Code</a>
+              <a href="https://ankanbhunia.github.io/doodleformer/">Website</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" aria-labelledby="publications-2021">
+      <h3 id="publications-2021">2021</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/2104.03964" aria-label="Read Handwriting Transformers">
+            <img src="./src2/hwt.png" alt="Handwriting Transformers preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICCV</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/2104.03964">Handwriting Transformers</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Salman Khan, Hisham Cholakkal, Rao Anwer, Fahad Khan, Mubarak Shah</p>
+            <nav class="publication-links" aria-label="Resources for Handwriting Transformers">
+              <a href="https://arxiv.org/abs/2104.03964">Paper</a>
+              <a href="https://github.com/ankanbhunia/Handwriting-Transformers">Code</a>
+              <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb">Demo</a>
+              <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">Website</a>
+              <a href="https://www.bloomberg.com/news/articles/2024-01-15/after-voice-clones-and-deepfake-videos-ai-can-now-mimic-handwriting?">Bloomberg</a>
+              <a href="https://patents.google.com/patent/US11756244B1/en">Patent</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <button type="button" class="show-all-toggle" id="publications-show-more" aria-expanded="false" aria-controls="publication-year-2019 publication-year-2018">
+      <span class="show-all-toggle-label">Show all</span>
+      <span class="show-all-toggle-chevron" aria-hidden="true"></span>
+    </button>
+    <section class="publication-year" id="publication-year-2019" aria-labelledby="publications-2019" hidden>
+      <h3 id="publications-2019">2019</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html" aria-label="Read Handwriting Recognition in Low-resource Scripts using Adversarial Learning">
+            <img src="./src2/im1.png" alt="Handwriting Recognition in Low-resource Scripts using Adversarial Learning preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">CVPR</span>
+            </div>
+            <h4><a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html">Handwriting Recognition in Low-resource Scripts using Adversarial Learning</a></h4>
+            <p class="publication-authors">Ayan Kumar Bhunia, Abhirup Das, <strong>Ankan Bhunia</strong>, Sairaj Kishore, Partha Pratim Roy</p>
+            <nav class="publication-links" aria-label="Resources for Handwriting Recognition in Low-resource Scripts using Adversarial Learning">
+              <a href="http://openaccess.thecvf.com/content_CVPR_2019/html/Bhunia_Handwriting_Recognition_in_Low-Resource_Scripts_Using_Adversarial_Learning_CVPR_2019_paper.html">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1810.11120" aria-label="Read Improving Document Binarization via Adversarial Noise-Texture Augmentation">
+            <img src="./src2/im2.png" alt="Improving Document Binarization via Adversarial Noise-Texture Augmentation preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICIP</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1810.11120">Improving Document Binarization via Adversarial Noise-Texture Augmentation</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Ayan Kumar Bhunia, Aneeshan Sain, Partha Pratim Roy</p>
+            <nav class="publication-links" aria-label="Resources for Improving Document Binarization via Adversarial Noise-Texture Augmentation">
+              <a href="https://arxiv.org/abs/1810.11120">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1811.01395" aria-label="Read A Deep One-Shot Network for Query-based Logo Retrieval">
+            <img src="./src2/PR_logo.png" alt="A Deep One-Shot Network for Query-based Logo Retrieval preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">Pattern Recognition</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1811.01395">A Deep One-Shot Network for Query-based Logo Retrieval</a></h4>
+            <p class="publication-authors">Ayan Kumar Bhunia, <strong>Ankan Bhunia</strong>, Shuvozit Ghose, Partha Pratim Roy, Umapada Pal</p>
+            <nav class="publication-links" aria-label="Resources for A Deep One-Shot Network for Query-based Logo Retrieval">
+              <a href="https://arxiv.org/abs/1811.01395">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1801.00470" aria-label="Read Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network">
+            <img src="./src2/im4.png" alt="Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">Pattern Recognition</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1801.00470">Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Aishik Konwer, Abir Bhowmik, Ayan Kumar Bhunia, Partha Pratim Roy</p>
+            <nav class="publication-links" aria-label="Resources for Script identification in natural scene image and video frames using an attention based Convolutional-LSTM network">
+              <a href="https://arxiv.org/abs/1801.00470">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1709.09348" aria-label="Read Signature Verification Approach using Fusion of Hybrid Texture Features">
+            <img src="./src2/im5.png" alt="Signature Verification Approach using Fusion of Hybrid Texture Features preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">Neural computing and Applications</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1709.09348">Signature Verification Approach using Fusion of Hybrid Texture Features</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Alireza Alaei, Partha Pratim Roy</p>
+            <nav class="publication-links" aria-label="Resources for Signature Verification Approach using Fusion of Hybrid Texture Features">
+              <a href="https://arxiv.org/abs/1709.09348">Paper</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="publication-year" id="publication-year-2018" aria-labelledby="publications-2018" hidden>
+      <h3 id="publications-2018">2018</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1801.07156" aria-label="Read Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks">
+            <img src="./src2/im6.png" alt="Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICPR</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1801.07156">Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks</a></h4>
+            <p class="publication-authors"><strong>Ankan Bhunia</strong>, Ayan Kumar Bhunia, Prithaj Banerjee, Aishik Konwer, Abir Bhowmik, Partha Pratim Roy, Umapada Pal</p>
+            <nav class="publication-links" aria-label="Resources for Word Level Font-to-Font Image Translation using Convolutional Recurrent Generative Adversarial Networks">
+              <a href="https://arxiv.org/abs/1801.07156">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1801.07141" aria-label="Read Staff line Removal using Generative Adversarial Networks">
+            <img src="./src2/im7.png" alt="Staff line Removal using Generative Adversarial Networks preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICPR</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1801.07141">Staff line Removal using Generative Adversarial Networks</a></h4>
+            <p class="publication-authors">Aishik Konwer, Ayan Kumar Bhunia, Abir Bhowmik, <strong>Ankan Bhunia</strong>, Prithaj Banerjee, Partha Pratim Roy, Umapada Pal</p>
+            <nav class="publication-links" aria-label="Resources for Staff line Removal using Generative Adversarial Networks">
+              <a href="https://arxiv.org/abs/1801.07141">Paper</a>
+            </nav>
+          </div>
+        </article>
+        <article class="publication-card">
+          <a class="publication-thumbnail" href="https://arxiv.org/abs/1801.07211" aria-label="Read Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network">
+            <img src="./src2/im8.png" alt="Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network preview" loading="lazy">
+          </a>
+          <div class="publication-details">
+            <div class="publication-meta">
+              <span class="publication-venue">ICPR</span>
+            </div>
+            <h4><a href="https://arxiv.org/abs/1801.07211">Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network</a></h4>
+            <p class="publication-authors">Ayan Kumar Bhunia, Abir Bhowmik, <strong>Ankan Bhunia</strong>, Aishik Konwer, Prithaj Banerjee, Partha Pratim Roy, Umapada Pal</p>
+            <nav class="publication-links" aria-label="Resources for Handwriting Trajectory Recovery using End-to-End Deep Encoder-Decoder Network">
+              <a href="https://arxiv.org/abs/1801.07211">Paper</a>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </section>
+  </li>
   <li id="content-research">
-  <h3 class="research-heading">Topics: 3D Vision / Embodied Vision / Applications</h3>
-<div class="card-container">
-  
-
-  <div class="card" style='width:100%;' >
-    [<span class="conference-highlight">NeurIPS'25</span>] <strong style="color:black">&bull; <u>InteractiveAD</u></strong> - [<a href="https://groups.inf.ed.ac.uk/vico/research/interactiveAD/">webpage</a> / <a href="https://openreview.net/pdf?id=t22zHB6yQ0">paper</a>]
-    <p style='text-align:justify; font-size: 12px; color:gray'>
-      Interactive agent-based AD framework for articulated 3D objects.<br><br>
-    <img src="./src2/gifs/iad.gif" alt="this slowpoke moves"  width="100%"/>
-    </p>
-    </div>
-  
-
-  <div class="card" style='width:100%;' >
-    [<span class="conference-highlight">CVPR'25</span>] <strong style="color:black">&bull; <u>Odd-One-Out</u></strong> - [<a href="https://arxiv.org/abs/2406.20099">Paper</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">GitHub</a> / <a href="https://github.com/VICO-UoE/OddOneOutAD">Dataset</a></a>] 
-  <p style='text-align:justify; font-size: 12px; color:gray'>
-    Detecting 'odd-looking' samples in multi-view multi-object scenes.<br><br>
-  <img src="./src2/gifs/o3.gif" alt="this slowpoke moves"  width="100%"/>
-  </p>
-  </div>
-
-
-  <div class="card" style='width:100%;' >
-    [<span class="conference-highlight">CVPR'24</span>] <strong style="color:black">&bull; <u>Looking3D</u></strong> - [<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a> / <a href="https://github.com/VICO-UoE/Looking3D">GitHub</a> / <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">webpage</a> / <a href="https://uoe-my.sharepoint.com/:f:/g/personal/s2514643_ed_ac_uk/EjURAFBBbmxHvlMvDGrKvzEBOB29U3QShVRsqekp0rha_g?e=jenLk6">Dataset</a>] 
-  <p style='text-align:justify; font-size: 12px; color:gray'>
-    A new benchmark for conditional AD via 2D-3D alignment.<br><br>
-  <img src="./src2/gifs/looking3d.gif" alt="this slowpoke moves"  width="100%"/>
-  </p>
-  </div>
-</div>
-
-<hr>
-
-<h3 class="research-heading">Topics: Image Generative Models / Diffusion / GAN</h3>
-
-<div class="card-container">
-
-  <div class="card"  style='width:100%;' >
-    [<span class="conference-highlight">CVPR'23</span>] <strong style="color:black">&bull; <u>PIDM</u></strong> - [<a href="https://arxiv.org/abs/2211.12500">Paper</a> / <a href="https://github.com/ankanbhunia/PIDM">GitHub</a> / <a href="https://ankanbhunia.github.io/PIDM/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb"  style="color:red"><b>Demo</b></a>] 
-<br> 
-  <p  style='text-align:justify; font-size: 12px; color:gray'>
-    Pose-guided person image synthesis via Diffusion models.
-<br><br>
-  <img src="./src2/gifs/pidm.gif" alt="this slowpoke moves"  width="100%"/><br>
-  </p>
-  </div>
- 
-
-
-
-  <div class="card"  style='width:100%;' >
-    [<span class="conference-highlight">ICCV'23</span>] <strong style="color:black">&bull; <u>GMNR</u></strong> - [<a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a> / <a href="https://github.com/VIROBO-15/GMNR">GitHub</a>] 
-<br>
-  <p  style='text-align:justify; font-size: 12px; color:gray'> A novel 3D-aware generative model based on multi-plane represenation.
-<br><br>
-  <img src="./src2/gifs/gmnr.gif" alt="this slowpoke moves"  width="100%"/><br> 
-  </p>
-  </div>
-
-
-
-  <div class="card"  style='width:100%;' >
-    [<span class="conference-highlight">ECCV'22</span>] <strong style="color:black">&bull; <u>Doodleformer</u></strong> - [<a href="https://arxiv.org/pdf/2112.03258">Paper</a> / <a href="https://github.com/ankanbhunia/doodleformer">GitHub</a> / <a href="https://ankanbhunia.github.io/doodleformer/">webpage</a>] 
-<br>
-  <p style='text-align:justify; font-size: 12px; color:gray'> A new coarse-to-fine framework for creative sketch generation problem.
-<br><br>
-  <img src="./src2/gifs/doodleformer.jpeg" alt="this slowpoke moves"  width="100%"/><br>
-  </p>
-  </div>
- 
-
-
-
-  <div class="card"  style='width:100%;' >
-    [<span class="conference-highlight">ICCV'21</span>] <strong style="color:black">&bull; <u>HWT</u></strong> - [<a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a> / <a href="https://github.com/ankanbhunia/Handwriting-Transformers">GitHub</a> / <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">webpage</a> / <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb" style="color:red"><b>Demo</b></a> / <a href="https://huggingface.co/spaces/ankankbhunia/HWT">Huggingface-demo</a>] 
-<br>
-  <p style='text-align:justify; font-size: 12px; color:gray'> Handwriting Synthesis - Generate text in anyone's handwriting. 
-<br><br>
-  <img src="./src2/gifs/hwt.gif" alt="this slowpoke moves"  width="100%"/><br>
-  </p>
-</div>
- 
-
-
+    <section class="research-section" aria-labelledby="research-3d">
+      <h3 class="research-heading" id="research-3d"><span class="research-topic-label">Topics</span>3D Vision / Embodied Vision / Applications</h3>
+      <div class="research-projects">
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>ZeroART</h4>
+              <span class="research-coming-soon">(paper / model / code coming soon)</span>
+            </header>
+            <span class="research-category">3D/4D Reconstruction</span>
+            <p>Zero-shot reconstruction of articulated 3D digital twins from sparse, unconstrained RGB images, recovering both geometry and motion while generalizing to real-world settings.</p>
+          </div>
+          <div class="research-media">
+            <video aria-label="ZeroART reconstruction demo" autoplay="" loop="" muted="" playsinline="" width="100%">
+<source src="./src2/gifs/zeroart.mp4" type="video/mp4"/>
+        Your browser does not support embedded video.
+      </video>
+          </div>
+        </article>
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>InteractiveAD</h4>
+              <span class="research-venue">NeurIPS&#x27;25</span>
+            </header>
+            <span class="research-category">Embodied Perception</span>
+            <span class="research-category">Anomaly Detection</span>
+            <p>The project explores how a robot can learn to detect physical defects in 3D articulated objects through agentic interactions.</p>
+            <nav class="research-links" aria-label="InteractiveAD resources">
+              <a href="https://groups.inf.ed.ac.uk/vico/research/interactiveAD/">Website</a>
+              <a href="https://openreview.net/pdf?id=t22zHB6yQ0">Paper</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="InteractiveAD project demonstration" loading="lazy" src="./src2/gifs/iad.gif" width="100%"/>
+          </div>
+        </article>
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>Odd-One-Out</h4>
+              <span class="research-venue">CVPR&#x27;25</span>
+            </header>
+            <span class="research-category">Vision Application</span>
+            <span class="research-category">Anomaly Detection</span>
+            <p>The project detects visual anomalies in multi-view, multi-object scenes by comparing objects with their neighbors to identify unusual appearances and structural differences.</p>
+            <nav class="research-links" aria-label="Odd-One-Out resources">
+              <a href="https://arxiv.org/abs/2406.20099">Paper</a>
+              <a href="https://github.com/VICO-UoE/OddOneOutAD">Code</a>
+              <a href="https://github.com/VICO-UoE/OddOneOutAD">Dataset</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="Odd-One-Out project demonstration" loading="lazy" src="./src2/gifs/o3.gif" width="100%"/>
+          </div>
+        </article>
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>Looking3D</h4>
+              <span class="research-venue">CVPR&#x27;24</span>
+            </header>
+            <span class="research-category">Vision Application</span>
+            <span class="research-category">Anomaly Detection</span>
+            <p>The project introduces a benchmark for detecting anomalies in 3D objects by aligning 2D images with 3D reference models to identify deviations in shape and structure.</p>
+            <nav class="research-links" aria-label="Looking3D resources">
+              <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Bhunia_Looking_3D_Anomaly_Detection_with_2D-3D_Alignment_CVPR_2024_paper.pdf">Paper</a>
+              <a href="https://github.com/VICO-UoE/Looking3D">Code</a>
+              <a href="https://groups.inf.ed.ac.uk/vico/research/Looking3D/">Website</a>
+              <a href="https://uoe-my.sharepoint.com/:f:/g/personal/s2514643_ed_ac_uk/EjURAFBBbmxHvlMvDGrKvzEBOB29U3QShVRsqekp0rha_g?e=jenLk6">Dataset</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="Looking3D project demonstration" loading="lazy" src="./src2/gifs/looking3d.gif" width="100%"/>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="research-section" aria-labelledby="research-generative">
+      <h3 class="research-heading" id="research-generative"><span class="research-topic-label">Topics</span>Image Generative Models / Diffusion / GAN</h3>
+      <div class="research-projects">
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>PIDM</h4>
+              <span class="research-venue">CVPR&#x27;23</span>
+            </header>
+            <span class="research-category">Image Generation</span>
+            <span class="research-category">Diffusion Models</span>
+            <p>The project uses diffusion models to generate realistic images of a person in a target pose while preserving their appearance, clothing, and fine visual details from a reference image.</p>
+            <nav class="research-links" aria-label="PIDM resources">
+              <a href="https://arxiv.org/abs/2211.12500">Paper</a>
+              <a href="https://github.com/ankanbhunia/PIDM">Code</a>
+              <a href="https://ankanbhunia.github.io/PIDM/">Website</a>
+              <a href="https://colab.research.google.com/github/ankanbhunia/PIDM/blob/main/PIDM_demo.ipynb">Demo</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="PIDM project demonstration" loading="lazy" src="./src2/gifs/pidm.gif" width="100%"/>
+          </div>
+        </article>
+        <article class="research-project">
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>GMNR</h4>
+              <span class="research-venue">ICCV&#x27;23</span>
+            </header>
+            <span class="research-category">3D Image Generation</span>
+            <p>A novel 3D-aware generative model based on multi-plane represenation.</p>
+            <nav class="research-links" aria-label="GMNR resources">
+              <a href="https://arxiv.org/pdf/2304.01172.pdf">Paper</a>
+              <a href="https://github.com/VIROBO-15/GMNR">Code</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="GMNR project demonstration" loading="lazy" src="./src2/gifs/gmnr.gif" width="100%"/>
+          </div>
+        </article>
+        <button type="button" class="show-all-toggle" id="research-show-more" aria-expanded="false" aria-controls="research-doodleformer research-hwt">
+          <span class="show-all-toggle-label">Show all</span>
+          <span class="show-all-toggle-chevron" aria-hidden="true"></span>
+        </button>
+        <article class="research-project" id="research-doodleformer" hidden>
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>Doodleformer</h4>
+              <span class="research-venue">ECCV&#x27;22</span>
+            </header>
+            <span class="research-category">Image Generation</span>
+            <span class="research-category">GAN</span>
+            <p>A new coarse-to-fine framework for creative sketch generation problem.</p>
+            <nav class="research-links" aria-label="Doodleformer resources">
+              <a href="https://arxiv.org/pdf/2112.03258">Paper</a>
+              <a href="https://github.com/ankanbhunia/doodleformer">Code</a>
+              <a href="https://ankanbhunia.github.io/doodleformer/">Website</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="Doodleformer project demonstration" loading="lazy" src="./src2/gifs/doodleformer.jpeg" width="100%"/>
+          </div>
+        </article>
+        <article class="research-project" id="research-hwt" hidden>
+          <div class="research-project-content">
+            <header class="research-project-header">
+              <h4>HWT</h4>
+              <span class="research-venue">ICCV&#x27;21</span>
+            </header>
+            <span class="research-category">Image Generation</span>
+            <span class="research-category">GAN</span>
+            <p>Handwriting Synthesis - Generate text in anyone&#x27;s handwriting.</p>
+            <nav class="research-links" aria-label="HWT resources">
+              <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Bhunia_Handwriting_Transformers_ICCV_2021_paper.pdf">Paper</a>
+              <a href="https://github.com/ankanbhunia/Handwriting-Transformers">Code</a>
+              <a href="https://ankanbhunia.github.io/Handwriting-Transformers/">Website</a>
+              <a href="https://colab.research.google.com/github/ankanbhunia/Handwriting-Transformers/blob/main/demo.ipynb">Demo</a>
+              <a href="https://huggingface.co/spaces/ankankbhunia/HWT">Hugging Face</a>
+            </nav>
+          </div>
+          <div class="research-media">
+            <img alt="HWT project demonstration" loading="lazy" src="./src2/gifs/hwt.gif" width="100%"/>
+          </div>
+        </article>
+      </div>
+    </section>
+  </li>
 
   <li id="content-patents">
-    <div class="card-container">
-      <div class="card" style='width:100%; margin: auto;'>
-        <strong style="color:black">&bull; <u>[09/2023] System and method for handwriting generation</u></strong> - [<a href="https://patents.google.com/patent/US11756244B1/en"><em style="color: #767872;">link</em></a>]
-        <br><br>
-        <img src="./patents/hwt.png" alt="this slowpoke moves"  width="100%"/><br>
-
+      <div class="patent-grid">
+        <article class="patent-card">
+          <div class="patent-content"><span class="publication-venue">Granted 09/2023</span>
+            <h3>System and method for handwriting generation</h3>
+            <a class="site-button" href="https://patents.google.com/patent/US11756244B1/en">View patent</a>
+          </div>
+          <img src="./patents/hwt.png" alt="System and method for handwriting generation illustration" loading="lazy">
+        </article>
+        <article class="patent-card">
+          <div class="patent-content"><span class="publication-venue">Granted 09/2024</span>
+            <h3>System and method of cross-modulated dense local fusion for few-shot image generation</h3>
+            <a class="site-button" href="https://patents.google.com/patent/US12100082B2/en">View patent</a>
+          </div>
+          <img src="./patents/xmgan.png" alt="System and method of cross-modulated dense local fusion for few-shot image generation illustration" loading="lazy">
+        </article>
       </div>
-      <div class="card" style='width:100%; margin: auto;'>
-        <strong style="color:black">&bull; <u>[09/2024] System and method of cross-modulated dense local fusion for few-shot image generation</u></strong> - [<a href="https://patents.google.com/patent/US12100082B2/en"><em style="color: #767872;">link</em></a>]
-        <br><br>
-        <img src="./patents/xmgan.png" alt="this slowpoke moves"  width="100%"/><br>
-
-      </div>
-    </div>
   </li>
-
-  
-  <li id="content-contact" style='text-align: center; font-family:courier;'>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.1956136720185!2d-3.187865156749468!3d55.9450301321123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c78381d04457%3A0xd072ab38eb50c7a4!2sSchool%20of%20Informatics!5e0!3m2!1sen!2suk!4v1684098165835!5m2!1sen!2suk" width="300" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><br><br>
-
-    The Bayes Centre, Edinburgh EH8 9BT <br>
-    Email: ankankumarbhunia [at] gmail.com / <br>
-    ankan.bhunia [at] ed.ac.uk<br>
-
-
+  <li id="content-contact">
+      <section class="contact-card">
+        <div class="contact-details">
+          <h3>The Bayes Centre</h3>
+          <p>Edinburgh EH8 9BT</p>
+          <div class="contact-emails">
+            <a href="mailto:ankan.bhunia@ed.ac.uk">ankan.bhunia [at] ed.ac.uk</a>
+            <a href="mailto:ankankumarbhunia@gmail.com">ankankumarbhunia [at] gmail.com</a>
+          </div>
+        </div>
+        <iframe allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.1956136720185!2d-3.187865156749468!3d55.9450301321123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4887c78381d04457%3A0xd072ab38eb50c7a4!2sSchool%20of%20Informatics!5e0!3m2!1sen!2suk!4v1684098165835!5m2!1sen!2suk" title="The Bayes Centre in Edinburgh"></iframe>
+      </section>
   </li>
-
-</ul>
-
-      </td>
-    </tr>
-  </tbody></table>
-<hr>
-<footer id="colophon" class="site-footer" role="contentinfo" style="margin-left: -30px;">
-  <div class="social-wrapper">
-    <ul>
-      <li>
-        <a href="https://twitter.com/ankanbh" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/twitter.png" alt="Twitter Logo" class="twitter-icon"></a>
-      </li>
-      <li>
-        <a href="https://wa.me/919038858890" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/wa.png" alt="Instagram Logo" class="instagram-icon"></a>
-      </li>
-            <li>
-        <a href="https://www.linkedin.com/in/ankan-kumar-bhunia/" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/linkedin.png" alt="Instagram Logo" class="instagram-icon"></a>
-      </li>
-
-      <li>
-        <a href="https://www.youtube.com/channel/UC2G-oDOz9FTJN-b839_mZtA" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/youtube.png" alt="Youtube Logo" class="youtube-icon"></a>
-      </li>
-      <li>
-        <a href="https://github.com/ankanbhunia" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/github.png" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-            <li>
-        <a href="http://scholar.google.com/citations?user=2leAc3AAAAAJ&hl=en" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/gsc.png" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-            <li>
-        <a href="https://dblp.org/pid/206/7200" target="_blank">
-          <img src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/dblp.png" alt="Foursquare Logo" class="foursquare-icon"></a>
-      </li>
-    </ul>
+      </ul>
+    </main>
   </div>
-
-</footer>
-<!-- #colophon -->
-
-</div>
+  <footer class="site-footer" id="colophon">
+    <nav class="footer-links" aria-label="Social profiles">
+        <a aria-label="Twitter" href="https://twitter.com/ankanbh" rel="noopener noreferrer" target="_blank">
+<img alt="" class="twitter-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/twitter.png"/></a>
+        <a aria-label="WhatsApp" href="https://wa.me/919038858890" rel="noopener noreferrer" target="_blank">
+<img alt="" class="instagram-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/wa.png"/></a>
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/ankan-kumar-bhunia/" rel="noopener noreferrer" target="_blank">
+<img alt="" class="instagram-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/linkedin.png"/></a>
+        <a aria-label="YouTube" href="https://www.youtube.com/channel/UC2G-oDOz9FTJN-b839_mZtA" rel="noopener noreferrer" target="_blank">
+<img alt="" class="youtube-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/youtube.png"/></a>
+        <a aria-label="GitHub" href="https://github.com/ankanbhunia" rel="noopener noreferrer" target="_blank">
+<img alt="" class="foursquare-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/github.png"/></a>
+        <a aria-label="Google Scholar" href="http://scholar.google.com/citations?user=2leAc3AAAAAJ&amp;hl=en" rel="noopener noreferrer" target="_blank">
+<img alt="" class="foursquare-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/gsc.png"/></a>
+        <a aria-label="DBLP" href="https://dblp.org/pid/206/7200" rel="noopener noreferrer" target="_blank">
+<img alt="" class="foursquare-icon" src="https://raw.githubusercontent.com/ankanbhunia/ankanbhunia.github.io/master/src2/icons/dblp.png"/></a>
+    </nav>
+  </footer>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -971,23 +1251,23 @@ ga('send', 'pageview');
 
 <script>
 $(function () {
-  var $contentlis = $('.tabs-content li'),
+  var $contentlis = $('.tabs-content > li'),
       $tabslis = $('.tabs li');
 
   // Function to activate a tab
   function activateTab(tabId) {
-    $tabslis.removeClass('active-tab');
+    $tabslis.removeClass('active-tab').find('button').attr('aria-pressed', 'false');
     $contentlis.hide();
 
     var $targetTab = $('#tab-' + tabId);
     var $targetContent = $('#content-' + tabId);
 
     if ($targetTab.length && $targetContent.length) {
-      $targetTab.addClass('active-tab');
+      $targetTab.addClass('active-tab').find('button').attr('aria-pressed', 'true');
       $targetContent.show();
     } else {
       // Default to Publications if tabId is not found or invalid
-      $('#tab-publications').addClass('active-tab');
+      $('#tab-publications').addClass('active-tab').find('button').attr('aria-pressed', 'true');
       $('#content-publications').show();
     }
   }
@@ -1029,6 +1309,17 @@ $(function () {
 
 </script>
 <script>
+    document.querySelectorAll('.show-all-toggle').forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+            const expanded = this.getAttribute('aria-expanded') !== 'true';
+            this.setAttribute('aria-expanded', String(expanded));
+            this.querySelector('.show-all-toggle-label').textContent = expanded ? 'Show less' : 'Show all';
+            this.getAttribute('aria-controls').split(' ').forEach(function (id) {
+                document.getElementById(id).hidden = !expanded;
+            });
+        });
+    });
+
     function changeImage() {
         document.getElementById("dmimage").src = "im2.png";
     }
